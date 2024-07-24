@@ -21,3 +21,6 @@ TODO
 
 = 0.0.1 =
 * Initial release
+
+= 0.0.2 =
+* Gutenberg Sidebar : added max-width CSS rule on container

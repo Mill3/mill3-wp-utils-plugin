@@ -11,14 +11,14 @@
  * that starts the plugin.
  *
  * @link              https://mill3.studio
- * @since             0.0.1
+ * @since             0.0.2
  * @package           Mill3_Wp_Utils
  *
  * @wordpress-plugin
  * Plugin Name:       MILL3 WP Utils
  * Plugin URI:        https://https://github.com/Mill3
  * Description:       MILL3 WP utils, includes Gutenberg editor sidebar resizer..
- * Version:           0.0.1
+ * Version:           0.0.2
  * Author:            MILL3 Studio
  * Author URI:        https://mill3.studio/
  * License:           GPL-2.0+
@@ -37,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 0.0.1 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MILL3_WP_UTILS_VERSION', '0.0.1' );
+define( 'MILL3_WP_UTILS_VERSION', '0.0.2' );
 
 /**
  * The code that runs during plugin activation.
