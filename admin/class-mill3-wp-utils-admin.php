@@ -104,7 +104,6 @@ class Mill3_Wp_Utils_Admin implements Mill3_Wp_Utils_Admin_Interface {
      */
 
     // wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/mill3-wp-utils-admin.css', array(), $this->version, 'all' );
-
   }
 
   /**
@@ -127,7 +126,6 @@ class Mill3_Wp_Utils_Admin implements Mill3_Wp_Utils_Admin_Interface {
      */
 
     // wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mill3-wp-utils-admin.js', array( 'jquery' ), $this->version, false );
-
   }
 
 }

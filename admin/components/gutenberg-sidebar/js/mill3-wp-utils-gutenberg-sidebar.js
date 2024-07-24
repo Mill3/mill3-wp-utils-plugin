@@ -1,7 +1,7 @@
 // Ensure the wp.data object is available
-// console.log(wp);
 
 let MILL3_WP_UTILS_GUTENBERG_SIDEBAR_READY = false;
+
 // LocalStorage key, previously defined in our all our themes using Gutenberg since 2022. ** DONT CHANGE THIS **
 const MILL3_WP_UTILS_GUTENBERG_SIDEBAR_STORAGE_KEY = 'mill3_gutenberg_resizable_sidebar';
 
