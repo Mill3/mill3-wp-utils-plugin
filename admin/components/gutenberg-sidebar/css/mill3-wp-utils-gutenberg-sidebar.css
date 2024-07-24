@@ -9,7 +9,8 @@
   display: none;
 }
 .--mill3-gutenberg-sidebar-open .interface-interface-skeleton__sidebar {
-  width: 40%;
+  width: 300px;
+  max-width: 50vw !important;
 }
 
 /*UI Styles*/
