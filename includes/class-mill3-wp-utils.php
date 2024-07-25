@@ -116,6 +116,7 @@ class Mill3_Wp_Utils {
      */
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-mill3-wp-utils-admin.php';
 
+    // create an instance of the loader
     $this->loader = new \Mill3_Plugins\Utils\Loader\Mill3_Wp_Utils_Loader();
   }
 
