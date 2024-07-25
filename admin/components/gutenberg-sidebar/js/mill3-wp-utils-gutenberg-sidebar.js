@@ -39,36 +39,23 @@ const mill3WpUtilsGutenbergSidebar = () => {
   // stop if already ready
   if(MILL3_WP_UTILS_GUTENBERG_SIDEBAR_READY === true) return;
 
+  // find main element
   const ELEMENT = document.querySelector('.edit-post-layout, .edit-site-layout');
-  const BUTTONS = document.querySelectorAll('.interface-pinned-items button');
 
-  if(!ELEMENT || BUTTONS.length == 0) return
+  // wait for the element to be available
+  if(!ELEMENT) return
 
-  // Check if the sidebar is open
-  BUTTONS.forEach((btn) => {
-    btn.addEventListener('click', (event) => {
-      // if the button is already clicked, return
-      if(btn.dataset.clicked === 'true') return;
-
-      // set clicked state, prevent double click event through the timeout below
-      btn.dataset.clicked = 'true';
-      setTimeout(() => {
-        mill3WpUtilsGutenbergOpenSidebar()
-        btn.dataset.clicked = 'false'; // reset clicked state
-      }, 100);
-    });
-  });
+  jQuery('body').on('click', '.interface-pinned-items button', mill3WpUtilsGutenbergOpenSidebar);
 
   // open sidebar on initial load after some timeout
   setTimeout(mill3WpUtilsGutenbergOpenSidebar, 1000);
 
-  // set ready flag to true
+  // set ready flag to true, prevent re-running the function
   MILL3_WP_UTILS_GUTENBERG_SIDEBAR_READY = true;
 }
 
 const mill3WpUtilsGutenbergOpenSidebar = () => {
   const BUTTONS = document.querySelectorAll('.interface-pinned-items button');
-
   const CLASSNAME = '--mill3-gutenberg-sidebar-open';
   const ELEMENT = document.querySelector('.edit-post-layout, .edit-site-layout');
 
