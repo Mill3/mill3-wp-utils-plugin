@@ -59,8 +59,8 @@ const mill3WpUtilsGutenbergSidebar = () => {
     });
   });
 
-  // open sidebar on initial load
-  mill3WpUtilsGutenbergOpenSidebar();
+  // open sidebar on initial load after some timeout
+  setTimeout(mill3WpUtilsGutenbergOpenSidebar, 1000);
 
   // set ready flag to true
   MILL3_WP_UTILS_GUTENBERG_SIDEBAR_READY = true;
