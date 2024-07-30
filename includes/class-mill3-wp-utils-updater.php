@@ -12,7 +12,7 @@ class Mill3_Wp_Utils_Updater {
   private $plugin_file;
 
   function __construct() {
-    $this->plugin_file = 'mill3-wp-utils/mill3-wp-utils.php';
+    $this->plugin_file = MILL3_WP_UTILS_PLUGIN_FILE;
     $this->plugin_version = MILL3_WP_UTILS_VERSION;
   }
 

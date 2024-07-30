@@ -26,6 +26,12 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'MILL3_WP_UTILS_PLUGIN_SLUG', 'mill3-wp-utils' );
 
 /**
+ * The path to the plugin directory.
+ */
+define( 'MILL3_WP_UTILS_PLUGIN_FILE', plugin_basename( __FILE__ ) );
+
+
+/**
  * Currently plugin version.
  * Start at version 0.0.1 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
