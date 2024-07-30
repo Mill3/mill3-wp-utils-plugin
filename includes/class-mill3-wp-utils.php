@@ -145,6 +145,7 @@ class Mill3_Wp_Utils {
     $plugin_updates = new \Mill3_Plugins\Utils\Updater\Mill3_Wp_Utils_Updater();
     $this->loader->add_filter( 'upgrader_package_options', $plugin_updates, 'upgrader_package_options', 10, 1);
     $this->loader->add_filter( 'pre_set_site_transient_update_plugins', $plugin_updates, 'check_for_update' );
+    $this->loader->add_filter( 'plugins_api', $plugin_updates, 'plugins_api', 10, 3 );
   }
 
   /**

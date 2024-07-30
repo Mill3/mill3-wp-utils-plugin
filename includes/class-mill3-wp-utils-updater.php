@@ -5,7 +5,7 @@ namespace Mill3_Plugins\Utils\Updater;
 class Mill3_Wp_Utils_Updater {
 
   // TODO : temporary url for testing
-  private $api_url = 'https://f644-24-225-231-201.ngrok-free.app/api/plugins/';
+  private $api_url = 'https://f644-24-225-231-201.ngrok-free.app/api/plugins';
 
   private $plugin_version;
 
@@ -70,6 +70,7 @@ class Mill3_Wp_Utils_Updater {
       $transient->response[$this->plugin_file] = (object) array(
         'slug'        => $update_data->slug,
         'new_version' => $update_data->new_version,
+        'version'     => $update_data->version,
         'url'         => $update_data->url,
         'package'     => $update_data->package,
       );
@@ -94,8 +95,46 @@ class Mill3_Wp_Utils_Updater {
     return $transient;
   }
 
-  public function get_remote_version() {
-    $response = wp_remote_get( $this->api_url );
+  public function plugins_api($false, $action, $args) {
+    if ( $action !== 'plugin_information' || $args->slug !== 'mill3-wp-utils-plugin' ) {
+      return false;
+    }
+
+    // get response from the API
+    $response = $this->get_remote_version('/infos');
+
+    // decode the response
+    $plugin_info = json_decode( wp_remote_retrieve_body($response), true );
+
+    // Populate the plugin information
+    $result = (object) array(
+      'name'          => $plugin_info['name'],
+      'slug'          => $plugin_info['slug'],
+      'version'       => $plugin_info['version'],
+      'author'        => $plugin_info['author'],
+      'author_profile'=> $plugin_info['author_profile'],
+      'homepage'      => $plugin_info['homepage'],
+      'download_link' => $plugin_info['download_link'],
+      // 'trunk'         => $plugin_info['trunk'],
+      // 'requires'      => $plugin_info['requires'],
+      // 'tested'        => $plugin_info['tested'],
+      'requires_php'  => $plugin_info['requires_php'],
+      'sections'      => array(
+          'description'  => $plugin_info['sections']['description'],
+          'installation' => $plugin_info['sections']['installation'],
+          'changelog'    => $plugin_info['sections']['changelog'],
+      )
+      // 'banners'       => array(
+      //     'low'  => $plugin_info['banners']['low'],
+      //     'high' => $plugin_info['banners']['high'],
+      // ),
+    );
+
+    return $result;
+  }
+
+  public function get_remote_version($uri = '') {
+    $response = wp_remote_get( $this->api_url . $uri );
     return $response;
 }
 
