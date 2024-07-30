@@ -8,6 +8,7 @@ const MILL3_WP_UTILS_GUTENBERG_SIDEBAR_STORAGE_KEY = 'mill3_gutenberg_resizable_
 // Check if the wp.data object is available
 if(typeof wp !== 'undefined' && typeof wp.data !== 'undefined') {
   wp.domReady(() => {
+    // using wp.data.subscribe to wait for the Gutenberg editor to be ready, functions are called again as the state changes in the editor
     wp.data.subscribe(mill3WpUtilsGutenbergSetResizable);
     wp.data.subscribe(mill3WpUtilsGutenbergSidebar);
   });

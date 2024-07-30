@@ -81,7 +81,8 @@ class Mill3_Wp_Utils_Admin implements Mill3_Wp_Utils_Admin_Interface {
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/components/gutenberg-sidebar/gutenberg-sidebar.php';
     (new \Mill3_Plugins\Utils\Admin\Components\Gutenberg_Sidebar( $this->plugin_name, $this->version, $this->loader ));
 
-    // TODO: in the future, add more components here !
+    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/components/security-headers/security-headers.php';
+    (new \Mill3_Plugins\Utils\Admin\Components\Security_headers( $this->plugin_name, $this->version, $this->loader ));
   }
 
   /**

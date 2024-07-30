@@ -78,6 +78,7 @@ class Mill3_Wp_Utils {
 
     $this->load_dependencies();
     $this->set_locale();
+    $this->set_updates();
     $this->define_admin_hooks();
   }
 
@@ -112,9 +113,15 @@ class Mill3_Wp_Utils {
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mill3-wp-utils-i18n.php';
 
     /**
+     * The class responsible for updating the plugin
+     */
+    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mill3-wp-utils-updater.php';
+
+    /**
      * The class responsible for defining all actions that occur in the admin area.
      */
     require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-mill3-wp-utils-admin.php';
+
 
     // create an instance of the loader
     $this->loader = new \Mill3_Plugins\Utils\Loader\Mill3_Wp_Utils_Loader();
@@ -130,11 +137,14 @@ class Mill3_Wp_Utils {
    * @access   private
    */
   private function set_locale() {
-
     $plugin_i18n = new \Mill3_Plugins\Utils\I18n\Mill3_Wp_Utils_i18n();
-
     $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+  }
 
+  private function set_updates() {
+    $plugin_updates = new \Mill3_Plugins\Utils\Updater\Mill3_Wp_Utils_Updater();
+    $this->loader->add_filter( 'pre_set_site_transient_update_plugins', $plugin_updates, 'check_for_update' );
+    // $this->loader->add_filter( 'plugins_api', $plugin_updates, 'plugin_infos', 10, 3);
   }
 
   /**

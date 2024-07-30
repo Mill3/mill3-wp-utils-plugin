@@ -2,6 +2,8 @@
 
 namespace Mill3_Plugins\Utils\Activator;
 
+use Mill3_Plugins\Utils\Updater;
+
 /**
  * Fired during plugin activation
  *
@@ -32,7 +34,6 @@ class Mill3_Wp_Utils_Activator {
    * @since    0.0.1
    */
   public static function activate() {
-
   }
 
 }
