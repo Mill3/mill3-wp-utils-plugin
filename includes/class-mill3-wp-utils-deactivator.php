@@ -22,7 +22,8 @@ namespace Mill3_Plugins\Utils\Deactivator;
  * @subpackage Mill3_Wp_Utils/includes
  * @author     MILL3 Studio <info@mill3.studio>
  */
-class Mill3_Wp_Utils_Deactivator {
+class Mill3_Wp_Utils_Deactivator
+{
 
   /**
    * Short Description. (use period)
@@ -31,8 +32,7 @@ class Mill3_Wp_Utils_Deactivator {
    *
    * @since    0.0.1
    */
-  public static function deactivate() {
-
+  public static function deactivate()
+  {
   }
-
 }

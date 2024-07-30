@@ -29,7 +29,8 @@ namespace Mill3_Plugins\Utils;
  * @subpackage Mill3_Wp_Utils/includes
  * @author     MILL3 Studio <info@mill3.studio>
  */
-class Mill3_Wp_Utils {
+class Mill3_Wp_Utils
+{
 
   /**
    * The loader that's responsible for maintaining and registering all hooks that power
@@ -68,8 +69,9 @@ class Mill3_Wp_Utils {
    *
    * @since    0.0.1
    */
-  public function __construct() {
-    if ( defined( 'MILL3_WP_UTILS_VERSION' ) ) {
+  public function __construct()
+  {
+    if (defined('MILL3_WP_UTILS_VERSION')) {
       $this->version = MILL3_WP_UTILS_VERSION;
     } else {
       $this->version = '0.0.1';
@@ -79,6 +81,7 @@ class Mill3_Wp_Utils {
     $this->load_dependencies();
     $this->set_locale();
     $this->set_updates();
+    $this->load_components();
     $this->define_admin_hooks();
   }
 
@@ -98,29 +101,30 @@ class Mill3_Wp_Utils {
    * @since    0.0.1
    * @access   private
    */
-  private function load_dependencies() {
+  private function load_dependencies()
+  {
 
     /**
      * The class responsible for orchestrating the actions and filters of the
      * core plugin.
      */
-    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mill3-wp-utils-loader.php';
+    require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-mill3-wp-utils-loader.php';
 
     /**
      * The class responsible for defining internationalization functionality
      * of the plugin.
      */
-    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mill3-wp-utils-i18n.php';
+    require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-mill3-wp-utils-i18n.php';
 
     /**
      * The class responsible for updating the plugin
      */
-    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mill3-wp-utils-updater.php';
+    require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-mill3-wp-utils-updater.php';
 
     /**
      * The class responsible for defining all actions that occur in the admin area.
      */
-    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-mill3-wp-utils-admin.php';
+    require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-mill3-wp-utils-admin.php';
 
 
     // create an instance of the loader
@@ -136,16 +140,49 @@ class Mill3_Wp_Utils {
    * @since    0.0.1
    * @access   private
    */
-  private function set_locale() {
+  private function set_locale()
+  {
     $plugin_i18n = new \Mill3_Plugins\Utils\I18n\Mill3_Wp_Utils_i18n();
-    $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+    $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
   }
 
-  private function set_updates() {
+  /**
+   * Set the plugin updates class
+   *
+   *
+   * @since    0.0.3.2
+   * @access   private
+   */
+  private function set_updates()
+  {
     $plugin_updates = new \Mill3_Plugins\Utils\Updater\Mill3_Wp_Utils_Updater();
-    $this->loader->add_filter( 'upgrader_package_options', $plugin_updates, 'upgrader_package_options', 10, 1);
-    $this->loader->add_filter( 'pre_set_site_transient_update_plugins', $plugin_updates, 'check_for_update' );
-    $this->loader->add_filter( 'plugins_api', $plugin_updates, 'plugins_api', 10, 3 );
+
+    // register the hooks to WP core update process
+
+    // after the plugin is downloaded, force the plugin directory to match existing directory structure
+    $this->loader->add_filter('upgrader_package_options', $plugin_updates, 'upgrader_package_options', 10, 1);
+
+    // check for updates
+    $this->loader->add_filter('pre_set_site_transient_update_plugins', $plugin_updates, 'check_for_update');
+
+    // the 'View details' link in the plugin list
+    $this->loader->add_filter('plugins_api', $plugin_updates, 'plugins_api', 10, 3);
+  }
+
+  /**
+   * Load all the components of the plugin
+   *
+   * @since    0.0.3.7
+   * @access   private
+   */
+  private function load_components()
+  {
+    // guttenberg sidebar component
+    require_once plugin_dir_path(dirname(__FILE__)) . 'components/gutenberg-sidebar/gutenberg-sidebar.php';
+    (new \Mill3_Plugins\Utils\Admin\Components\Gutenberg_Sidebar($this->plugin_name, $this->version, $this->loader));
+    // security headers component
+    require_once plugin_dir_path(dirname(__FILE__)) . 'components/security-headers/security-headers.php';
+    (new \Mill3_Plugins\Utils\Admin\Components\Security_headers($this->plugin_name, $this->version, $this->loader));
   }
 
   /**
@@ -155,9 +192,10 @@ class Mill3_Wp_Utils {
    * @since    0.0.1
    * @access   private
    */
-  private function define_admin_hooks() {
+  private function define_admin_hooks()
+  {
     // load admin class
-    (new \Mill3_Plugins\Utils\Admin\Mill3_Wp_Utils_Admin( $this->get_plugin_name(), $this->get_version(), $this->get_loader()))->run();
+    (new \Mill3_Plugins\Utils\Admin\Mill3_Wp_Utils_Admin($this->get_plugin_name(), $this->get_version(), $this->get_loader()))->run();
   }
 
   /**
@@ -165,7 +203,8 @@ class Mill3_Wp_Utils {
    *
    * @since    0.0.1
    */
-  public function run() {
+  public function run()
+  {
     $this->loader->run();
   }
 
@@ -176,7 +215,8 @@ class Mill3_Wp_Utils {
    * @since     0.0.1
    * @return    string    The name of the plugin.
    */
-  public function get_plugin_name() {
+  public function get_plugin_name()
+  {
     return $this->plugin_name;
   }
 
@@ -186,7 +226,8 @@ class Mill3_Wp_Utils {
    * @since     0.0.1
    * @return    Mill3_Wp_Utils_Loader    Orchestrates the hooks of the plugin.
    */
-  public function get_loader() {
+  public function get_loader()
+  {
     return $this->loader;
   }
 
@@ -196,8 +237,8 @@ class Mill3_Wp_Utils {
    * @since     0.0.1
    * @return    string    The version number of the plugin.
    */
-  public function get_version() {
+  public function get_version()
+  {
     return $this->version;
   }
-
 }

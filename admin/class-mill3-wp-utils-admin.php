@@ -24,7 +24,8 @@ use Mill3_Plugins\Utils\Interfaces\Mill3_Wp_Utils_Admin as Mill3_Wp_Utils_Admin_
  * @subpackage Mill3_Wp_Utils/admin
  * @author     MILL3 Studio <info@mill3.studio>
  */
-class Mill3_Wp_Utils_Admin implements Mill3_Wp_Utils_Admin_Interface {
+class Mill3_Wp_Utils_Admin implements Mill3_Wp_Utils_Admin_Interface
+{
 
   /**
    * The ID of this plugin.
@@ -62,27 +63,18 @@ class Mill3_Wp_Utils_Admin implements Mill3_Wp_Utils_Admin_Interface {
    * @param      string    $version    The version of this plugin.
    * @param      object    $loader     The class responsible for loading the components of the plugin.
    */
-  public function __construct( $plugin_name, $version, $loader ) {
+  public function __construct($plugin_name, $version, $loader)
+  {
 
     $this->plugin_name = $plugin_name;
     $this->version = $version;
     $this->loader = $loader;
   }
 
-  public function run() {
-    $this->load_components();
-
-    $this->loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_styles' );
-    $this->loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
-  }
-
-  private function load_components() {
-    // guttenberg sidebar component
-    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/components/gutenberg-sidebar/gutenberg-sidebar.php';
-    (new \Mill3_Plugins\Utils\Admin\Components\Gutenberg_Sidebar( $this->plugin_name, $this->version, $this->loader ));
-
-    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/components/security-headers/security-headers.php';
-    (new \Mill3_Plugins\Utils\Admin\Components\Security_headers( $this->plugin_name, $this->version, $this->loader ));
+  public function run()
+  {
+    $this->loader->add_action('admin_enqueue_scripts', $this, 'enqueue_styles');
+    $this->loader->add_action('admin_enqueue_scripts', $this, 'enqueue_scripts');
   }
 
   /**
@@ -90,7 +82,8 @@ class Mill3_Wp_Utils_Admin implements Mill3_Wp_Utils_Admin_Interface {
    *
    * @since    0.0.1
    */
-  public function enqueue_styles() {
+  public function enqueue_styles()
+  {
 
     /**
      * This function is provided for demonstration purposes only.
@@ -112,7 +105,8 @@ class Mill3_Wp_Utils_Admin implements Mill3_Wp_Utils_Admin_Interface {
    *
    * @since    0.0.1
    */
-  public function enqueue_scripts() {
+  public function enqueue_scripts()
+  {
 
     /**
      * This function is provided for demonstration purposes only.
@@ -128,5 +122,4 @@ class Mill3_Wp_Utils_Admin implements Mill3_Wp_Utils_Admin_Interface {
 
     // wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mill3-wp-utils-admin.js', array( 'jquery' ), $this->version, false );
   }
-
 }

@@ -26,7 +26,8 @@ namespace Mill3_Plugins\Utils\I18n;
  * @subpackage Mill3_Wp_Utils/includes
  * @author     MILL3 Studio <info@mill3.studio>
  */
-class Mill3_Wp_Utils_i18n {
+class Mill3_Wp_Utils_i18n
+{
 
 
   /**
@@ -34,16 +35,13 @@ class Mill3_Wp_Utils_i18n {
    *
    * @since    0.0.1
    */
-  public function load_plugin_textdomain() {
+  public function load_plugin_textdomain()
+  {
 
     load_plugin_textdomain(
       'mill3-wp-utils',
       false,
-      dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+      dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
     );
-
   }
-
-
-
 }
