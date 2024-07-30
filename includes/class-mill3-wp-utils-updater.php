@@ -11,10 +11,13 @@ class Mill3_Wp_Utils_Updater
 
   private $plugin_file;
 
+  private $plugin_slug;
+
   function __construct()
   {
     $this->plugin_file = MILL3_WP_UTILS_PLUGIN_FILE;
     $this->plugin_version = MILL3_WP_UTILS_VERSION;
+    $this->plugin_slug = MILL3_WP_UTILS_PLUGIN_SLUG;
   }
 
   /**
@@ -50,6 +53,8 @@ class Mill3_Wp_Utils_Updater
 
   public function check_for_update($transient)
   {
+    // error_log(print_r($transient, true));
+
     // Only proceed if the transient contains the 'checked' array
     if (empty($transient->checked)) {
       return $transient;
@@ -71,10 +76,11 @@ class Mill3_Wp_Utils_Updater
     if ($update) {
       // An update is available.
       $transient->response[$this->plugin_file] = (object) array(
-        'slug'        => $update_data->slug,
+        'id'          => "mill3.dev/plugins/{$this->plugin_slug}",
+        'plugin'      => $this->plugin_file,
+        'slug'        => $this->plugin_slug,
         'new_version' => $update_data->new_version,
         'version'     => $update_data->version,
-        'Version'     => $update_data->version,
         'url'         => $update_data->url,
         'package'     => $update_data->package,
       );
