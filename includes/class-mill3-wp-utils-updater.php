@@ -74,6 +74,7 @@ class Mill3_Wp_Utils_Updater
         'slug'        => $update_data->slug,
         'new_version' => $update_data->new_version,
         'version'     => $update_data->version,
+        'Version'     => $update_data->version,
         'url'         => $update_data->url,
         'package'     => $update_data->package,
       );
@@ -92,6 +93,11 @@ class Mill3_Wp_Utils_Updater
       // for the enable/disable auto-updates links to correctly appear in UI.
       $transient->no_update[$this->plugin_file] = $item;
     }
+
+    $transient->checked[ $this->plugin_file ] = $this->plugin_version;
+    $transient->last_checked = time();
+
+    error_log(print_r($transient, true));
 
     return $transient;
   }
