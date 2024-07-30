@@ -20,6 +20,31 @@ class Mill3_Wp_Utils_Updater {
     // if needed, do something here
   }
 
+  /**
+   * Force the plugin directory to match existing directory structure, Github releases are structured differently, ie: plugin-name-x.x.x.zip
+   */
+  public function upgrader_package_options( $options ) {
+    $destination = $options['destination'] ?? '';
+    $package     = $options['package'] ?? '';
+    $dirname     = isset( $options['hook_extra']['plugin'] )
+                   ? dirname( $options['hook_extra']['plugin'] )
+                   : '';
+
+    if ( empty( $dirname ) || '.' === $dirname ) {
+        return $options;
+    }
+
+    if ( 'github.com' !== parse_url( $package, PHP_URL_HOST) ) {
+       return $options;
+    }
+
+    if ( WP_PLUGIN_DIR === $destination ) {
+        $options['destination'] = path_join( $destination, $dirname );
+    }
+
+    return $options;
+  }
+
   public function check_for_update($transient) {
     // Only proceed if the transient contains the 'checked' array
     if ( empty( $transient->checked ) ) {
