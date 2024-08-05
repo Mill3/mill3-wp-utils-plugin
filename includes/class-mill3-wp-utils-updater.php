@@ -41,7 +41,7 @@ class Mill3_Wp_Utils_Updater
       return $options;
     }
 
-    if ('github.com' !== parse_url($package, PHP_URL_HOST)) {
+    if ('api.github.com' !== parse_url($package, PHP_URL_HOST)) {
       return $options;
     }
 
@@ -101,12 +101,6 @@ class Mill3_Wp_Utils_Updater
 
     $transient->checked[ $this->plugin_file ] = $this->plugin_version;
     $transient->last_checked = time();
-
-    // error_log(print_r($transient, true));
-
-    // if($save) {
-    //   set_site_transient( 'update_plugins', $transient );
-    // }
 
     return $transient;
   }
