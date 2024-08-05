@@ -34,7 +34,7 @@ define( 'MILL3_WP_UTILS_VERSION', '0.0.3.8.2' );
  * TODO : temporary url for testing
  */
 
-define( 'MILL3_WP_UTILS_PLUGINS_API', 'https://mill3-wp-utils-plugin-api-mill3.vercel.app/api/plugins');
+define( 'MILL3_WP_UTILS_PLUGINS_API', 'https://mill3-wp-utils-plugin-api-mill3.vercel.app/api/plugin');
 
 /**
  * The plugin slug, should represent the plugin directory name.
