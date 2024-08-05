@@ -5,7 +5,7 @@ namespace Mill3_Plugins\Utils\Updater;
 class Mill3_Wp_Utils_Updater
 {
 
-  private $api_url = MILL3_WP_UTILS_PLUGINS_API;
+  private $api_url;
 
   private $plugin_version;
 
@@ -15,6 +15,7 @@ class Mill3_Wp_Utils_Updater
 
   function __construct()
   {
+    $this->api_url = MILL3_WP_UTILS_PLUGINS_API;
     $this->plugin_file = MILL3_WP_UTILS_PLUGIN_FILE;
     $this->plugin_version = MILL3_WP_UTILS_VERSION;
     $this->plugin_slug = MILL3_WP_UTILS_PLUGIN_SLUG;
@@ -53,8 +54,6 @@ class Mill3_Wp_Utils_Updater
 
   public function check_for_update($transient)
   {
-    // error_log(print_r($transient, true));
-
     // Only proceed if the transient contains the 'checked' array
     if (empty($transient->checked)) {
       return $transient;
@@ -71,7 +70,7 @@ class Mill3_Wp_Utils_Updater
     $update_data = json_decode(wp_remote_retrieve_body($response));
 
     // compare the versions and check if an update is available
-    $update = version_compare($this->plugin_version, $update_data->new_version, '<');
+    $update = version_compare($this->plugin_version, $update_data->version, '<');
 
     if ($update) {
       // An update is available.
@@ -79,7 +78,7 @@ class Mill3_Wp_Utils_Updater
         'id'          => "mill3.dev/plugins/{$this->plugin_slug}",
         'plugin'      => $this->plugin_file,
         'slug'        => $this->plugin_slug,
-        'new_version' => $update_data->new_version,
+        'new_version' => $update_data->version,
         'version'     => $update_data->version,
         'url'         => $update_data->url,
         'package'     => $update_data->package,
@@ -103,7 +102,11 @@ class Mill3_Wp_Utils_Updater
     $transient->checked[ $this->plugin_file ] = $this->plugin_version;
     $transient->last_checked = time();
 
-    error_log(print_r($transient, true));
+    // error_log(print_r($transient, true));
+
+    // if($save) {
+    //   set_site_transient( 'update_plugins', $transient );
+    // }
 
     return $transient;
   }
