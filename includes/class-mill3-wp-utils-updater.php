@@ -75,23 +75,21 @@ class Mill3_Wp_Utils_Updater
     if ($update) {
       // An update is available.
       $transient->response[$this->plugin_file] = (object) array(
-        'id'          => "mill3.dev/plugins/{$this->plugin_slug}",
-        'plugin'      => $this->plugin_file,
-        'slug'        => $this->plugin_slug,
-        'new_version' => $update_data->version,
-        'version'     => $update_data->version,
-        'url'         => $update_data->url,
-        'package'     => $update_data->package,
+        'id'           => "mill3.dev/plugins/{$this->plugin_slug}",
+        'plugin'       => $this->plugin_file,
+        'slug'         => $this->plugin_slug,
+        'new_version'  => $update_data->version,
+        'version'      => $update_data->version,
+        'url'          => $update_data->url,
+        'package'      => $update_data->package,
       );
     } else {
       // No update is available.
       $item = array(
-        'theme'        => $this->plugin_file,
-        'new_version'  => $this->plugin_version,
-        'url'          => '',
-        'package'      => '',
-        'requires'     => '',
-        'requires_php' => '',
+        'id'           => "mill3.dev/plugins/{$this->plugin_slug}",
+        'plugin'       => $this->plugin_file,
+        'slug'         => $this->plugin_slug,
+        'new_version'  => $this->plugin_version
       );
 
       // Adding the "mock" item to the `no_update` property is required
@@ -128,7 +126,7 @@ class Mill3_Wp_Utils_Updater
       'download_link' => $plugin_info['download_link'],
       // 'trunk'         => $plugin_info['trunk'],
       // 'requires'      => $plugin_info['requires'],
-      // 'tested'        => $plugin_info['tested'],
+      'tested'        => $plugin_info['tested'],
       'requires_php'  => $plugin_info['requires_php'],
       'sections'      => array(
         'description'  => $plugin_info['sections']['description'],
