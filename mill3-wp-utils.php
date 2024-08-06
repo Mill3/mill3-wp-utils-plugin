@@ -3,7 +3,7 @@
  * Plugin Name:       MILL3 WP Utils
  * Plugin URI:        https://github.com/Mill3/mill3-wp-utils-plugin
  * Description:       MILL3 WP utils, includes Gutenberg editor sidebar resizer.
- * Version:           0.0.3.8.6
+ * Version:           0.0.3.9
  * Author:            MILL3 Studio
  * Author URI:        https://mill3.studio/
  * Tested up to:      6.6.6
@@ -15,6 +15,8 @@
  * Update URI:        https://1b8b-24-225-231-201.ngrok-free.app/
  */
 
+ require __DIR__ . '/vendor/autoload.php';
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
   die;
@@ -25,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 0.0.1 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MILL3_WP_UTILS_VERSION', '0.0.3.8.6' );
+define( 'MILL3_WP_UTILS_VERSION', '0.0.3.9' );
 
 
 /**
@@ -34,7 +36,7 @@ define( 'MILL3_WP_UTILS_VERSION', '0.0.3.8.6' );
  * TODO : temporary url for testing
  */
 
-define( 'MILL3_WP_UTILS_PLUGINS_API', 'https://mill3-wp-utils-plugin-api-mill3.vercel.app/api/plugin');
+define( 'MILL3_WP_UTILS_PLUGINS_API', 'https://github.com/Mill3/mill3-wp-utils-plugin');
 
 /**
  * The plugin slug, should represent the plugin directory name.
@@ -59,7 +61,9 @@ define( 'MILL3_WP_UTILS_PLUGIN_FILE_NAME', basename(__FILE__) );
 /**
  * The name of the plugin file using expected directory structure, should be : mill3-wp-utils-plugin/mill3-wp-utils.php
  */
-define( 'MILL3_WP_UTILS_PLUGIN_FILE', join("/", [MILL3_WP_UTILS_PLUGIN_DIR_NAME, MILL3_WP_UTILS_PLUGIN_FILE_NAME]));
+// define( 'MILL3_WP_UTILS_PLUGIN_FILE', join("/", [MILL3_WP_UTILS_PLUGIN_DIR_NAME, MILL3_WP_UTILS_PLUGIN_FILE_NAME]));
+
+define( 'MILL3_WP_UTILS_PLUGIN_FILE', join("/", [__DIR__, MILL3_WP_UTILS_PLUGIN_FILE_NAME]));
 
 
 
@@ -104,9 +108,6 @@ register_deactivation_hook( __FILE__, 'deactivate_mill3_wp_utils' );
  * @since    0.0.1
  */
 function run_mill3_wp_utils() {
-  // $update_plugins = get_site_transient( 'update_plugins' );
-  // error_log(print_r($update_plugins, true));
-
   $plugin = new \Mill3_Plugins\Utils\Mill3_Wp_Utils();
   $plugin->run();
 

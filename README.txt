@@ -24,3 +24,8 @@ TODO
 
 = 0.0.2 =
 * Gutenberg Sidebar : added max-width CSS rule on container
+
+== TODO ==
+
+[ ] class-mill3-wp-utils-updater.php : use plugin-update-checker library https://github.com/YahnisElsts/plugin-update-checker
+[ ] Built admin interface for settings and enabling components

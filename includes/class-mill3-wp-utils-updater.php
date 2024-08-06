@@ -1,6 +1,9 @@
 <?php
 
+
 namespace Mill3_Plugins\Utils\Updater;
+
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 class Mill3_Wp_Utils_Updater
 {
@@ -13,12 +16,24 @@ class Mill3_Wp_Utils_Updater
 
   private $plugin_slug;
 
+  private $updater;
+
   function __construct()
   {
     $this->api_url = MILL3_WP_UTILS_PLUGINS_API;
     $this->plugin_file = MILL3_WP_UTILS_PLUGIN_FILE;
     $this->plugin_version = MILL3_WP_UTILS_VERSION;
     $this->plugin_slug = MILL3_WP_UTILS_PLUGIN_SLUG;
+
+    $this->updater = PucFactory::buildUpdateChecker(
+      $this->api_url,
+      $this->plugin_file,
+      $this->plugin_slug
+    );
+
+    $this->updater->setBranch('master');
+
+    // error_log(print_r($this->updater->getUpdate(), true));
   }
 
   /**
@@ -26,8 +41,11 @@ class Mill3_Wp_Utils_Updater
    */
   public function upgrader_package_options($options)
   {
+    // get data from the updater instance
+    $update = $this->updater->getUpdate();
+
     // stop here if the plugin is not the one we want to modify
-    if (isset($options['hook_extra']['plugin']) && $options['hook_extra']['plugin'] !== $this->plugin_file) {
+    if (isset($options['hook_extra']['plugin']) && $options['hook_extra']['plugin'] !== $update->filename) {
       return $options;
     }
 
@@ -59,46 +77,20 @@ class Mill3_Wp_Utils_Updater
       return $transient;
     }
 
-    // get response from the API
-    $response = $this->get_remote_version("/");
-
-    if (is_wp_error($response)) {
-      return $transient;
-    }
-
-    // decode the response
-    $update_data = json_decode(wp_remote_retrieve_body($response));
-
-    // compare the versions and check if an update is available
-    $update = version_compare($this->plugin_version, $update_data->version, '<');
+    $update = $this->updater->getUpdate();
 
     if ($update) {
-      // An update is available.
-      $transient->response[$this->plugin_file] = (object) array(
-        'id'           => "mill3.dev/plugins/{$this->plugin_slug}",
-        'plugin'       => $this->plugin_file,
-        'slug'         => $this->plugin_slug,
-        'new_version'  => $update_data->version,
-        'version'      => $update_data->version,
-        'url'          => $update_data->url,
-        'package'      => $update_data->package,
-      );
+      $transient->response[$update->filename] = $update->toWpFormat();
     } else {
-      // No update is available.
-      $item = array(
-        'id'           => "mill3.dev/plugins/{$this->plugin_slug}",
-        'plugin'       => $this->plugin_file,
-        'slug'         => $this->plugin_slug,
-        'new_version'  => $this->plugin_version
-      );
+      // No update available, get current plugin info.
+      $update = $this->updater->getUpdateState()->getUpdate();
 
-      // Adding the "mock" item to the `no_update` property is required
-      // for the enable/disable auto-updates links to correctly appear in UI.
-      $transient->no_update[$this->plugin_file] = $item;
+      // Adding the plugin info to the `no_update` property is required
+      // for the enable/disable auto-update links to appear correctly in the UI.
+      if ($update) {
+        $transient->no_update[$update->filename] = $update;
+      }
     }
-
-    $transient->checked[ $this->plugin_file ] = $this->plugin_version;
-    $transient->last_checked = time();
 
     return $transient;
   }
