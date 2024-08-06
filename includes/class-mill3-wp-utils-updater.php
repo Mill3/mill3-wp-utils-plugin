@@ -32,8 +32,6 @@ class Mill3_Wp_Utils_Updater
     );
 
     $this->updater->setBranch('master');
-
-    // error_log(print_r($this->updater->getUpdate(), true));
   }
 
   /**
