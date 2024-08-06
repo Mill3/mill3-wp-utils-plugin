@@ -158,15 +158,7 @@ class Mill3_Wp_Utils
     $plugin_updates = new \Mill3_Plugins\Utils\Updater\Mill3_Wp_Utils_Updater();
 
     // register the hooks to WP core update process
-
-    // after the plugin is downloaded, force the plugin directory to match existing directory structure
-    // $this->loader->add_filter('upgrader_package_options', $plugin_updates, 'upgrader_package_options', 10, 1);
-
-    // check for updates
     $this->loader->add_filter('pre_set_site_transient_update_plugins', $plugin_updates, 'check_for_update');
-
-    // the 'View details' link in the plugin list
-    $this->loader->add_filter('plugins_api', $plugin_updates, 'plugins_api', 10, 3);
   }
 
   /**

@@ -3,7 +3,7 @@
  * Plugin Name:       MILL3 WP Utils
  * Plugin URI:        https://github.com/Mill3/mill3-wp-utils-plugin
  * Description:       MILL3 WP utils, includes Gutenberg editor sidebar resizer.
- * Version:           0.0.3.9.1
+ * Version:           0.0.3.9.2
  * Author:            MILL3 Studio
  * Author URI:        https://mill3.studio/
  * Tested up to:      6.6.6
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 0.0.1 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MILL3_WP_UTILS_VERSION', '0.0.3.9.1' );
+define( 'MILL3_WP_UTILS_VERSION', '0.0.3.9.2' );
 
 
 /**
