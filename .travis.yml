@@ -20,7 +20,7 @@ cache:
 matrix:
   include:
     - php: 7.4.0
-      env: WP_VERSION=latest
+      env: WP_VERSION=latest TMPDIR=/tmp/
 
 before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
