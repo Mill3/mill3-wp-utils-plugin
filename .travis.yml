@@ -18,15 +18,7 @@ cache:
 
 matrix:
   include:
-    - php: 8.2
-      env: WP_VERSION=latest
-    - php: 8.1
-      env: WP_VERSION=latest
-    - php: 7.4
-      env: WP_VERSION=latest
-    - php: 7.3
-      env: WP_VERSION=latest
-    - php: 7.2
+    - php: 7.4.0
       env: WP_VERSION=latest
 
 before_script:
@@ -39,8 +31,8 @@ before_script:
     fi
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
-      bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-      composer global require "phpunit/phpunit=8.5.*|11.3.*"
+      bash bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 $WP_VERSION
+      composer global require "phpunit/phpunit=9.6.20"
     fi
   - |
     if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
