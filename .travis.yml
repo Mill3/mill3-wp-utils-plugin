@@ -1,5 +1,5 @@
 sudo: false
-dist: trusty
+dist: xenial
 
 language: php
 
@@ -20,7 +20,7 @@ matrix:
   include:
     - php: 8.2
       env: WP_VERSION=latest
-    - php: 8.0
+    - php: 8.1
       env: WP_VERSION=latest
     - php: 7.4
       env: WP_VERSION=latest
