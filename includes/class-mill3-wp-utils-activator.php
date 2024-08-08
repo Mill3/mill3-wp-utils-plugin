@@ -27,14 +27,14 @@ use Mill3_Plugins\Utils\Updater;
 class Mill3_Wp_Utils_Activator
 {
 
-  /**
-   * Short Description. (use period)
-   *
-   * Long Description.
-   *
-   * @since    0.0.1
-   */
-  public static function activate()
-  {
-  }
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since    0.0.1
+     */
+    public static function activate()
+    {
+    }
 }

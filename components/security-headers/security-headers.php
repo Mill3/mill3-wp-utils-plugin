@@ -44,15 +44,9 @@ class Security_headers implements Mill3_Wp_Utils_Admin
         $this->loader->add_action('send_headers', $this, 'add_headers');
     }
 
-    public function enqueue_styles()
-    {
-        // future implementation
-    }
+    public function enqueue_styles() { }
 
-    public function enqueue_scripts()
-    {
-        // future implementation
-    }
+    public function enqueue_scripts() { }
 
     /**
      * Add security headers to the response : only allow same origin and mill3.studio to frame this site

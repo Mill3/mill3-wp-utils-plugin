@@ -14,7 +14,7 @@
  * Domain Path:       /languages
  */
 
- require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -31,8 +31,6 @@ define( 'MILL3_WP_UTILS_VERSION', '0.0.4' );
 
 /**
  * Plugins update server endpoint
- *
- * TODO : temporary url for testing
  */
 
 define( 'MILL3_WP_UTILS_PLUGINS_API', 'https://github.com/Mill3/mill3-wp-utils-plugin');
