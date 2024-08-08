@@ -66,12 +66,6 @@ class Mill3_Wp_Utils
     protected $version;
 
 
-    // public function __construct()
-    // {
-    //     // if the plugin is already instanciated, return the instance
-    //     // if(self::$instance) return self::$instance;
-    // }
-
     public static function get_instance()
     {
         if (is_null(self::$instance)) {
@@ -99,11 +93,15 @@ class Mill3_Wp_Utils
         }
         $this->plugin_name = 'mill3-wp-utils';
 
+        // prepare the plugin
         $this->load_dependencies();
         $this->set_locale();
         $this->set_updates();
         $this->load_components();
         $this->define_admin_hooks();
+
+        // run the plugin
+        $this->run();
     }
 
 

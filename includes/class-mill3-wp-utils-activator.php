@@ -36,21 +36,5 @@ class Mill3_Wp_Utils_Activator
    */
   public static function activate()
   {
-    // Expected plugin directory
-    // $expected_dir = join('/', [WP_PLUGIN_DIR, MILL3_WP_UTILS_PLUGIN_DIR_NAME]);
-
-    // // Current plugin directory
-    // $current_dir = MILL3_WP_UTILS_PLUGIN_DIR_PATH;
-
-    // // current plugin name
-    // $plugin_name = plugin_basename(join("/", [MILL3_WP_UTILS_PLUGIN_DIR_PATH, MILL3_WP_UTILS_PLUGIN_FILE_NAME]));
-
-    // // Check if the plugin is installed in the correct directory
-    // if (trailingslashit($current_dir) !== trailingslashit($expected_dir)) {
-    //   // Deactivate the plugin
-    //   deactivate_plugins($plugin_name);
-    //   // Output an error message
-    //   wp_die(__('Plugin must be installed in the <code>' . $expected_dir . '</code> directory.', 'mill3-wp-utils'));
-    // }
   }
 }

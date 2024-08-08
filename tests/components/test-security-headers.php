@@ -7,24 +7,23 @@ class SecurityHeadersTest extends \WP_UnitTestCase
 
     public $plugin;
 
-    function set_up()
+    public function setUp(): void
     {
-        parent::set_up();
+        parent::setUp();
     }
 
     // Run this after each test
-    // public function tearDown() {
-    //     parent::tearDown();
-    // }
+    public function tearDown(): void
+    {
+        parent::tearDown();
+    }
 
     function test_http_headers()
     {
         // Simulate a request to the homepage
-        echo home_url();
-        $response = wp_remote_get( home_url() );
-        // var_dump($response);
+        $response = wp_remote_get(home_url());
 
         // Check if the request was successful
-        $this->assertNotWPError( $response );
+        $this->assertNotWPError($response);
     }
 }

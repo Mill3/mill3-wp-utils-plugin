@@ -107,7 +107,7 @@ register_deactivation_hook( __FILE__, 'deactivate_mill3_wp_utils' );
  * @since    0.0.1
  */
 function run_mill3_wp_utils() {
-  $plugin = \Mill3_Plugins\Utils\Mill3_Wp_Utils::get_instance();
+  $plugin = Mill3_Plugins\Utils\Mill3_Wp_Utils::get_instance();
   $plugin->enable();
 }
 
