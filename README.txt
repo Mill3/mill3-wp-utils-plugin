@@ -5,7 +5,6 @@ Tags: custom
 Requires at least: 6.3.0
 Tested up to: 6.3
 License: GPLv2 or later
-Requires: PHP8
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 MILL3 WP utils, includes Gutenberg editor sidebar resizer.
@@ -16,17 +15,17 @@ MILL3 WP utils, includes Gutenberg editor sidebar resizer.
 
 == Changelog ==
 
-= 0.0.1 =
-* Initial release
-
-= 0.0.2 =
-* Gutenberg Sidebar : added max-width CSS rule on container
+= 0.0.4 =
+* First release with Sidebar utils and security headers
 
 = 0.0.3.x =
 * Self-update class era
 
-= 0.0.4 =
-* First release
+= 0.0.2 =
+* Gutenberg Sidebar : added max-width CSS rule on container
+
+= 0.0.1 =
+* Initial tests
 
 == TODO ==
 
