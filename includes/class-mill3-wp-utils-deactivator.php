@@ -25,14 +25,14 @@ namespace Mill3_Plugins\Utils\Deactivator;
 class Mill3_Wp_Utils_Deactivator
 {
 
-  /**
-   * Short Description. (use period)
-   *
-   * Long Description.
-   *
-   * @since    0.0.1
-   */
-  public static function deactivate()
-  {
-  }
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since    0.0.1
+     */
+    public static function deactivate()
+    {
+    }
 }

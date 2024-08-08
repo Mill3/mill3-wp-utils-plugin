@@ -32,205 +32,226 @@ namespace Mill3_Plugins\Utils;
 class Mill3_Wp_Utils
 {
 
-  /**
-   * The loader that's responsible for maintaining and registering all hooks that power
-   * the plugin.
-   *
-   * @since    0.0.1
-   * @access   protected
-   * @var      Mill3_Wp_Utils_Loader    $loader    Maintains and registers all hooks for the plugin.
-   */
-  protected $loader;
+    /**
+     * @var $instance Plugin Singleton plugin instance
+     */
+    public static $instance = null;
 
-  /**
-   * The unique identifier of this plugin.
-   *
-   * @since    0.0.1
-   * @access   protected
-   * @var      string    $plugin_name    The string used to uniquely identify this plugin.
-   */
-  protected $plugin_name;
+    /**
+     * The loader that's responsible for maintaining and registering all hooks that power
+     * the plugin.
+     *
+     * @since    0.0.1
+     * @access   protected
+     * @var      Mill3_Wp_Utils_Loader    $loader    Maintains and registers all hooks for the plugin.
+     */
+    protected $loader;
 
-  /**
-   * The current version of the plugin.
-   *
-   * @since    0.0.1
-   * @access   protected
-   * @var      string    $version    The current version of the plugin.
-   */
-  protected $version;
+    /**
+     * The unique identifier of this plugin.
+     *
+     * @since    0.0.1
+     * @access   protected
+     * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+     */
+    protected $plugin_name;
 
-  /**
-   * Define the core functionality of the plugin.
-   *
-   * Set the plugin name and the plugin version that can be used throughout the plugin.
-   * Load the dependencies, define the locale, and set the hooks for the admin area and
-   * the public-facing side of the site.
-   *
-   * @since    0.0.1
-   */
-  public function __construct()
-  {
-    if (defined('MILL3_WP_UTILS_VERSION')) {
-      $this->version = MILL3_WP_UTILS_VERSION;
-    } else {
-      $this->version = '0.0.1';
+    /**
+     * The current version of the plugin.
+     *
+     * @since    0.0.1
+     * @access   protected
+     * @var      string    $version    The current version of the plugin.
+     */
+    protected $version;
+
+
+    public static function get_instance()
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new Mill3_Wp_Utils();
+        }
+
+        return self::$instance;
     }
-    $this->plugin_name = 'mill3-wp-utils';
-
-    $this->load_dependencies();
-    $this->set_locale();
-    $this->set_updates();
-    $this->load_components();
-    $this->define_admin_hooks();
-  }
-
-  /**
-   * Load the required dependencies for this plugin.
-   *
-   * Include the following files that make up the plugin:
-   *
-   * - Mill3_Wp_Utils_Loader. Orchestrates the hooks of the plugin.
-   * - Mill3_Wp_Utils_i18n. Defines internationalization functionality.
-   * - Mill3_Wp_Utils_Admin. Defines all hooks for the admin area.
-   * - Mill3_Wp_Utils_Public. Defines all hooks for the public side of the site.
-   *
-   * Create an instance of the loader which will be used to register the hooks
-   * with WordPress.
-   *
-   * @since    0.0.1
-   * @access   private
-   */
-  private function load_dependencies()
-  {
 
     /**
-     * The class responsible for orchestrating the actions and filters of the
-     * core plugin.
+     * Define the core functionality of the plugin.
+     *
+     * Set the plugin name and the plugin version that can be used throughout the plugin.
+     * Load the dependencies, define the locale, and set the hooks for the admin area and
+     * the public-facing side of the site.
+     *
+     * @since    0.0.1
      */
-    require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-mill3-wp-utils-loader.php';
+    public function enable()
+    {
+        if (defined('MILL3_WP_UTILS_VERSION')) {
+            $this->version = MILL3_WP_UTILS_VERSION;
+        } else {
+            $this->version = '0.0.1';
+        }
+        $this->plugin_name = 'mill3-wp-utils';
+
+        // prepare the plugin
+        $this->load_dependencies();
+        $this->set_locale();
+        $this->set_updates();
+        $this->load_components();
+        $this->define_admin_hooks();
+
+        // run the plugin
+        $this->run();
+    }
+
+
 
     /**
-     * The class responsible for defining internationalization functionality
+     * Load the required dependencies for this plugin.
+     *
+     * Include the following files that make up the plugin:
+     *
+     * - Mill3_Wp_Utils_Loader. Orchestrates the hooks of the plugin.
+     * - Mill3_Wp_Utils_i18n. Defines internationalization functionality.
+     * - Mill3_Wp_Utils_Admin. Defines all hooks for the admin area.
+     * - Mill3_Wp_Utils_Public. Defines all hooks for the public side of the site.
+     *
+     * Create an instance of the loader which will be used to register the hooks
+     * with WordPress.
+     *
+     * @since    0.0.1
+     * @access   private
+     */
+    private function load_dependencies()
+    {
+
+        /**
+         * The class responsible for orchestrating the actions and filters of the
+         * core plugin.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-mill3-wp-utils-loader.php';
+
+        /**
+         * The class responsible for defining internationalization functionality
+         * of the plugin.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-mill3-wp-utils-i18n.php';
+
+        /**
+         * The class responsible for updating the plugin
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-mill3-wp-utils-updater.php';
+
+        /**
+         * The class responsible for defining all actions that occur in the admin area.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-mill3-wp-utils-admin.php';
+
+
+        // create an instance of the loader
+        $this->loader = new \Mill3_Plugins\Utils\Loader\Mill3_Wp_Utils_Loader();
+    }
+
+    /**
+     * Define the locale for this plugin for internationalization.
+     *
+     * Uses the Mill3_Wp_Utils_i18n class in order to set the domain and to register the hook
+     * with WordPress.
+     *
+     * @since    0.0.1
+     * @access   private
+     */
+    private function set_locale()
+    {
+        $plugin_i18n = new \Mill3_Plugins\Utils\I18n\Mill3_Wp_Utils_i18n();
+        $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
+    }
+
+    /**
+     * Set the plugin updates class
+     *
+     *
+     * @since    0.0.3.2
+     * @access   private
+     */
+    private function set_updates()
+    {
+        $plugin_updates = new \Mill3_Plugins\Utils\Updater\Mill3_Wp_Utils_Updater();
+
+        // register the hooks to WP core update process
+        $this->loader->add_filter('pre_set_site_transient_update_plugins', $plugin_updates, 'check_for_update');
+    }
+
+    /**
+     * Load all the components of the plugin
+     *
+     * @since    0.0.3.7
+     * @access   private
+     */
+    private function load_components()
+    {
+        // guttenberg sidebar component
+        require_once plugin_dir_path(dirname(__FILE__)) . 'components/gutenberg-sidebar/gutenberg-sidebar.php';
+        (new \Mill3_Plugins\Utils\Admin\Components\Gutenberg_Sidebar($this->plugin_name, $this->version, $this->loader));
+        // security headers component
+        require_once plugin_dir_path(dirname(__FILE__)) . 'components/security-headers/security-headers.php';
+        (new \Mill3_Plugins\Utils\Admin\Components\Security_headers($this->plugin_name, $this->version, $this->loader));
+    }
+
+    /**
+     * Register all of the hooks related to the admin area functionality
      * of the plugin.
+     *
+     * @since    0.0.1
+     * @access   private
      */
-    require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-mill3-wp-utils-i18n.php';
+    private function define_admin_hooks()
+    {
+        // load admin class
+        (new \Mill3_Plugins\Utils\Admin\Mill3_Wp_Utils_Admin($this->get_plugin_name(), $this->get_version(), $this->get_loader()))->run();
+    }
 
     /**
-     * The class responsible for updating the plugin
+     * Run the loader to execute all of the hooks with WordPress.
+     *
+     * @since    0.0.1
      */
-    require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-mill3-wp-utils-updater.php';
+    public function run()
+    {
+        $this->loader->run();
+    }
 
     /**
-     * The class responsible for defining all actions that occur in the admin area.
+     * The name of the plugin used to uniquely identify it within the context of
+     * WordPress and to define internationalization functionality.
+     *
+     * @since     0.0.1
+     * @return    string    The name of the plugin.
      */
-    require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-mill3-wp-utils-admin.php';
+    public function get_plugin_name()
+    {
+        return $this->plugin_name;
+    }
 
+    /**
+     * The reference to the class that orchestrates the hooks with the plugin.
+     *
+     * @since     0.0.1
+     * @return    Mill3_Wp_Utils_Loader    Orchestrates the hooks of the plugin.
+     */
+    public function get_loader()
+    {
+        return $this->loader;
+    }
 
-    // create an instance of the loader
-    $this->loader = new \Mill3_Plugins\Utils\Loader\Mill3_Wp_Utils_Loader();
-  }
-
-  /**
-   * Define the locale for this plugin for internationalization.
-   *
-   * Uses the Mill3_Wp_Utils_i18n class in order to set the domain and to register the hook
-   * with WordPress.
-   *
-   * @since    0.0.1
-   * @access   private
-   */
-  private function set_locale()
-  {
-    $plugin_i18n = new \Mill3_Plugins\Utils\I18n\Mill3_Wp_Utils_i18n();
-    $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
-  }
-
-  /**
-   * Set the plugin updates class
-   *
-   *
-   * @since    0.0.3.2
-   * @access   private
-   */
-  private function set_updates()
-  {
-    $plugin_updates = new \Mill3_Plugins\Utils\Updater\Mill3_Wp_Utils_Updater();
-
-    // register the hooks to WP core update process
-    $this->loader->add_filter('pre_set_site_transient_update_plugins', $plugin_updates, 'check_for_update');
-  }
-
-  /**
-   * Load all the components of the plugin
-   *
-   * @since    0.0.3.7
-   * @access   private
-   */
-  private function load_components()
-  {
-    // guttenberg sidebar component
-    require_once plugin_dir_path(dirname(__FILE__)) . 'components/gutenberg-sidebar/gutenberg-sidebar.php';
-    (new \Mill3_Plugins\Utils\Admin\Components\Gutenberg_Sidebar($this->plugin_name, $this->version, $this->loader));
-    // security headers component
-    require_once plugin_dir_path(dirname(__FILE__)) . 'components/security-headers/security-headers.php';
-    (new \Mill3_Plugins\Utils\Admin\Components\Security_headers($this->plugin_name, $this->version, $this->loader));
-  }
-
-  /**
-   * Register all of the hooks related to the admin area functionality
-   * of the plugin.
-   *
-   * @since    0.0.1
-   * @access   private
-   */
-  private function define_admin_hooks()
-  {
-    // load admin class
-    (new \Mill3_Plugins\Utils\Admin\Mill3_Wp_Utils_Admin($this->get_plugin_name(), $this->get_version(), $this->get_loader()))->run();
-  }
-
-  /**
-   * Run the loader to execute all of the hooks with WordPress.
-   *
-   * @since    0.0.1
-   */
-  public function run()
-  {
-    $this->loader->run();
-  }
-
-  /**
-   * The name of the plugin used to uniquely identify it within the context of
-   * WordPress and to define internationalization functionality.
-   *
-   * @since     0.0.1
-   * @return    string    The name of the plugin.
-   */
-  public function get_plugin_name()
-  {
-    return $this->plugin_name;
-  }
-
-  /**
-   * The reference to the class that orchestrates the hooks with the plugin.
-   *
-   * @since     0.0.1
-   * @return    Mill3_Wp_Utils_Loader    Orchestrates the hooks of the plugin.
-   */
-  public function get_loader()
-  {
-    return $this->loader;
-  }
-
-  /**
-   * Retrieve the version number of the plugin.
-   *
-   * @since     0.0.1
-   * @return    string    The version number of the plugin.
-   */
-  public function get_version()
-  {
-    return $this->version;
-  }
+    /**
+     * Retrieve the version number of the plugin.
+     *
+     * @since     0.0.1
+     * @return    string    The version number of the plugin.
+     */
+    public function get_version()
+    {
+        return $this->version;
+    }
 }

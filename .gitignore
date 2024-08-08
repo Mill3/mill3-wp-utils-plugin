@@ -8,6 +8,7 @@ node_modules
 dist/
 .webpack_cache
 sass_vars.json
+.phpunit.result.cache
 
 # OS files
 .tm_properties
