@@ -1,58 +1,28 @@
 <?php
 
-namespace Mill3_Plugins\Utils\Admin\Components;
+namespace Mill3_Plugins\Utils\Components;
+use Mill3_Plugins\Utils\Components\Mill3_Wp_Utils_Component;
 
-use Mill3_Plugins\Utils\Interfaces\Mill3_Wp_Utils_Admin;
-
-class Gutenberg_Sidebar implements Mill3_Wp_Utils_Admin
+class Gutenberg_Sidebar extends Mill3_Wp_Utils_Component
 {
-
-    /**
-     * The ID of this plugin.
-     *
-     * @since    0.0.1
-     * @access   private
-     * @var      string    $plugin_name    The ID of this plugin.
-     */
-    private $plugin_name;
-
-    /**
-     * The version of this plugin.
-     *
-     * @since    0.0.1
-     * @access   private
-     * @var      string    $version    The current version of this plugin.
-     */
-    private $version;
-
-    /**
-     * The loader that's responsible for maintaining and registering all hooks that power
-     * the plugin.
-     *
-     * @since    0.0.1
-     * @access   protected
-     * @var      Mill3_Wp_Utils_Loader    $loader    Maintains and registers all hooks for the plugin.
-     */
-    private $loader;
-
-    public function __construct($plugin_name, $version, $loader)
-    {
-        $this->plugin_name = $plugin_name;
-        $this->version = $version;
-        $this->loader = $loader;
-
+    protected function init(): void {
         $this->loader->add_action('admin_enqueue_scripts', $this, 'enqueue_scripts');
         $this->loader->add_action('admin_enqueue_scripts', $this, 'enqueue_styles');
     }
 
-    public function enqueue_styles()
-    {
-        wp_enqueue_style('mill3-wp-utils-gutenberg-sidebar', plugin_dir_url(__FILE__) . 'css/mill3-wp-utils-gutenberg-sidebar.css', array(), $this->version, 'all');
+    public function enqueue_styles(): void {
+        wp_enqueue_style($this->plugin->get_name() . '-gutenberg-sidebar', plugin_dir_url(__FILE__) . 'css/mill3-wp-utils-gutenberg-sidebar.css', array(), $this->version(), 'all');
     }
 
-    public function enqueue_scripts()
-    {
+    public function enqueue_scripts(): void {
         wp_enqueue_script('jquery-ui-resizable');
-        wp_enqueue_script('mill3-wp-utils-gutenberg-sidebar', plugin_dir_url(__FILE__) . 'js/mill3-wp-utils-gutenberg-sidebar.js', array('jquery-ui-resizable'), $this->version, true);
+        wp_enqueue_script($this->plugin->get_name() . '-gutenberg-sidebar', plugin_dir_url(__FILE__) . 'js/mill3-wp-utils-gutenberg-sidebar.js', array('jquery-ui-resizable'), $this->version(), true);
     }
+
+    // getters
+    public static function id() : string { return 'gutenberg-sidebar'; }
+    public function version() : string { return '0.0.1'; }
+    public function title() : string { return 'Gutenberg Sidebar'; }
+    public function description() : string { return 'Ever find that Rich Block Editor sidebar is too small? This module enable you to enlarge the Rich Block Editor sidebar to the size of your dreams.'; }
+
 }

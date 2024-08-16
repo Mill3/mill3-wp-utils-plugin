@@ -59,7 +59,6 @@ define( 'MILL3_WP_UTILS_PLUGIN_FILE_NAME', basename(__FILE__) );
  * The name of the plugin file using expected directory structure, should be : mill3-wp-utils-plugin/mill3-wp-utils.php
  */
 // define( 'MILL3_WP_UTILS_PLUGIN_FILE', join("/", [MILL3_WP_UTILS_PLUGIN_DIR_NAME, MILL3_WP_UTILS_PLUGIN_FILE_NAME]));
-
 define( 'MILL3_WP_UTILS_PLUGIN_FILE', join("/", [__DIR__, MILL3_WP_UTILS_PLUGIN_FILE_NAME]));
 
 
@@ -68,45 +67,36 @@ define( 'MILL3_WP_UTILS_PLUGIN_FILE', join("/", [__DIR__, MILL3_WP_UTILS_PLUGIN_
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-
-require plugin_dir_path( __FILE__ ) . 'interfaces/mill3-wp-utils-admin.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-mill3-wp-utils-component.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-mill3-wp-utils-i18n.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-mill3-wp-utils-loader.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-mill3-wp-utils-updater.php';
 require plugin_dir_path( __FILE__ ) . 'includes/class-mill3-wp-utils.php';
 
+require plugin_dir_path( __FILE__ ) . 'admin/class-html-helper.php';
+require plugin_dir_path( __FILE__ ) . 'admin/class-mill3-wp-utils-admin.php';
+
+require plugin_dir_path( __FILE__ ) . 'components/ai-image-alt/ai-image-alt.php';
+require plugin_dir_path( __FILE__ ) . 'components/gutenberg-sidebar/gutenberg-sidebar.php';
+require plugin_dir_path( __FILE__ ) . 'components/security-headers/security-headers.php';
+
+// start plugin
+$MILL_WP_UTILS = Mill3_Plugins\Utils\Mill3_Wp_Utils::get_instance();
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-mill3-wp-utils-activator.php
  */
-function activate_mill3_wp_utils() {
-  require_once plugin_dir_path( __FILE__ ) . 'includes/class-mill3-wp-utils-activator.php';
-  \Mill3_Plugins\Utils\Activator\Mill3_Wp_Utils_Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-mill3-wp-utils-deactivator.php
- */
-function deactivate_mill3_wp_utils() {
-  require_once plugin_dir_path( __FILE__ ) . 'includes/class-mill3-wp-utils-deactivator.php';
-  \Mill3_Plugins\Utils\Deactivator\Mill3_Wp_Utils_Deactivator::deactivate();
-}
+function activate_mill3_wp_utils() { Mill3_Plugins\Utils\Mill3_Wp_Utils::activate(); }
+function deactivate_mill3_wp_utils() { Mill3_Plugins\Utils\Mill3_Wp_Utils::deactivate(); }
+function uninstall_mill3_wp_utils() { Mill3_Plugins\Utils\Mill3_Wp_Utils::uninstall(); }
 
 register_activation_hook( __FILE__, 'activate_mill3_wp_utils' );
 register_deactivation_hook( __FILE__, 'deactivate_mill3_wp_utils' );
+register_uninstall_hook( __FILE__, 'uninstall_mill3_wp_utils' );
 
-
-/**
- * Begins execution of the plugin.
- *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
- *
- * @since    0.0.1
- */
-function run_mill3_wp_utils() {
-  $plugin = Mill3_Plugins\Utils\Mill3_Wp_Utils::get_instance();
-  $plugin->enable();
-}
-
-run_mill3_wp_utils();
+/*
+register_activation_hook( __FILE__, array('Mill3_Plugins\Utils\Mill3_Wp_Utils', 'activate') );
+register_deactivation_hook( __FILE__, array('Mill3_Plugins\Utils\Mill3_Wp_Utils', 'deactivate') );
+register_uninstall_hook( __FILE__, array('Mill3_Plugins\Utils\Mill3_Wp_Utils', 'uninstall') );
+*/
