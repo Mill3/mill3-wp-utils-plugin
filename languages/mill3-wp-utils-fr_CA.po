@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: MILL3 WP Utils 0.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mill3-wp-utils-"
 "plugin\n"
-"POT-Creation-Date: 2024-08-21T18:09:48+00:00\n"
-"PO-Revision-Date: 2024-08-21 14:12-0400\n"
+"POT-Creation-Date: 2024-08-21T18:43:13+00:00\n"
+"PO-Revision-Date: 2024-08-21 14:44-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -157,6 +157,16 @@ msgstr ""
 "Utiliser l’IA pour vous suggérer des texte alternatives pour vos images. "
 "Fonctionne avec toutes les langues installées."
 
+#: components/block-visibility/block-visibility.php:56
+msgid "Block Visibility"
+msgstr "Block Visibility"
+
+#: components/block-visibility/block-visibility.php:57
+msgid "This module set default values for Block Visibility plugin."
+msgstr ""
+"Ce module définit les valeurs par défaut à utiliser pour l’extension Block "
+"Visibilité."
+
 #: components/gutenberg-sidebar/gutenberg-sidebar.php:25
 msgid "Gutenberg Sidebar"
 msgstr "Barre latérale Gutenberg"
@@ -167,15 +177,20 @@ msgid ""
 "you to enlarge the Rich Block Editor sidebar to the size of your dreams."
 msgstr ""
 
-#: components/security-headers/security-headers.php:25
-msgid "Security Headers"
-msgstr "Security Headers"
+#: components/live-site-viewer/live-site-viewer.php:101
+msgid "Live Site Viewer"
+msgstr ""
 
+#: components/live-site-viewer/live-site-viewer.php:102
 #: components/security-headers/security-headers.php:26
 msgid ""
 "This module allows us to showcase your awesome project in our website. If "
 "you ❤️ us, you should keep this active."
 msgstr ""
+
+#: components/security-headers/security-headers.php:25
+msgid "Security Headers"
+msgstr "Security Headers"
 
 #~ msgid "MILL3 WP utils"
 #~ msgstr "MILL3 WP Utils"
