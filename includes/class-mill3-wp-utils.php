@@ -38,6 +38,7 @@ class Mill3_Wp_Utils
         '\Mill3_Plugins\Utils\Components\Gutenberg_Sidebar',
         //'\Mill3_Plugins\Utils\Components\Live_Site_Viewer',
         '\Mill3_Plugins\Utils\Components\Security_headers',
+        '\Mill3_Plugins\Utils\Components\SVG',
     );
 
     /**

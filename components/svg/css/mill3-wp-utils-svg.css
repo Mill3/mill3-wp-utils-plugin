@@ -1,0 +1,4 @@
+.attachment-266x266, .thumbnail img[src$=".svg"] {
+  width: 100% !important;
+  height: auto !important;
+}

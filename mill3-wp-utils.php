@@ -82,6 +82,7 @@ require plugin_dir_path( __FILE__ ) . 'components/block-visibility/block-visibil
 require plugin_dir_path( __FILE__ ) . 'components/gutenberg-sidebar/gutenberg-sidebar.php';
 //require plugin_dir_path( __FILE__ ) . 'components/live-site-viewer/live-site-viewer.php';
 require plugin_dir_path( __FILE__ ) . 'components/security-headers/security-headers.php';
+require plugin_dir_path( __FILE__ ) . 'components/svg/svg.php';
 
 // start plugin
 $MILL_WP_UTILS = Mill3_Plugins\Utils\Mill3_Wp_Utils::get_instance();
