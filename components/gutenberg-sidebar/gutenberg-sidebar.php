@@ -22,7 +22,7 @@ class Gutenberg_Sidebar extends Mill3_Wp_Utils_Component
     // getters
     public static function id() : string { return 'gutenberg-sidebar'; }
     public function version() : string { return '0.0.1'; }
-    public function title() : string { return 'Gutenberg Sidebar'; }
-    public function description() : string { return 'Ever find that Rich Block Editor sidebar is too small? This module enable you to enlarge the Rich Block Editor sidebar to the size of your dreams.'; }
+    public function title() : string { return __('Gutenberg Sidebar', 'mill3-wp-utils'); }
+    public function description() : string { return __('Ever find that Rich Block Editor sidebar is too small? This module enable you to enlarge the Rich Block Editor sidebar to the size of your dreams.', 'mill3-wp-utils'); }
 
 }

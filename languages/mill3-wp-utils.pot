@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-21T17:42:55+00:00\n"
+"POT-Creation-Date: 2024-08-21T18:09:48+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: mill3-wp-utils\n"
@@ -140,4 +140,20 @@ msgstr ""
 
 #: components/ai-image-alt/ai-image-alt.php:431
 msgid "Get sophisticated AI suggestions for image alternative text. Works with all installed languages."
+msgstr ""
+
+#: components/gutenberg-sidebar/gutenberg-sidebar.php:25
+msgid "Gutenberg Sidebar"
+msgstr ""
+
+#: components/gutenberg-sidebar/gutenberg-sidebar.php:26
+msgid "Ever find that Rich Block Editor sidebar is too small? This module enable you to enlarge the Rich Block Editor sidebar to the size of your dreams."
+msgstr ""
+
+#: components/security-headers/security-headers.php:25
+msgid "Security Headers"
+msgstr ""
+
+#: components/security-headers/security-headers.php:26
+msgid "This module allows us to showcase your awesome project in our website. If you ❤️ us, you should keep this active."
 msgstr ""
