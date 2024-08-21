@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       MILL3 WP Utils
  * Plugin URI:        https://github.com/Mill3/mill3-wp-utils-plugin
- * Description:       MILL3 WP utils, includes Gutenberg editor sidebar resizer.
+ * Description:       MILL3 WP Utils
  * Version:           0.0.4
  * Author:            MILL3 Studio
  * Author URI:        https://mill3.studio/

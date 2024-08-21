@@ -153,7 +153,17 @@ class Mill3_Wp_Utils_Admin
         if( !$this->is_current_screen() ) return;
 
         if ( isset( $_REQUEST['settings-updated'] ) ) {
-            $this->load_view( MILL3_WP_UTILS_PLUGIN_DIR_PATH . 'admin/ui/admin-notices.php', array('type' => $_REQUEST['settings-updated']) );
+            $type = $_REQUEST['settings-updated'];
+            $message = null;
+
+            switch ($type) {
+                case 'success': $message = __('Settings updated.', 'mill3-wp-utils'); break;
+                case 'error': $message = __('An error occur during settings update. Please try again.', 'mill3-wp-utils'); break;
+                case 'info': $message = __('Informations', 'mill3-wp-utils'); break;
+                case 'warning': $message = __('Warning', 'mill3-wp-utils'); break;
+            }
+
+            if( $message ) $this->load_view( MILL3_WP_UTILS_PLUGIN_DIR_PATH . 'admin/ui/admin-notices.php', array('type' => $type, 'message' => $message) );
         }
     }
 
@@ -297,6 +307,6 @@ class Mill3_Wp_Utils_Admin
 
     private function is_current_screen() {
         $screen = get_current_screen();
-        return ($screen->id === 'toplevel_page_' . $this->menu_slug) || str_contains($screen->id, 'mill3-plugin_page');
+        return ($screen->id === 'toplevel_page_' . $this->menu_slug) || str_contains($screen->id, MILL3_WP_UTILS_PLUGIN_SLUG);
     }
 }

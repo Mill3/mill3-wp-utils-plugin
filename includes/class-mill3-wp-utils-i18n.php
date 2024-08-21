@@ -37,11 +37,6 @@ class Mill3_Wp_Utils_i18n
      */
     public function load_plugin_textdomain()
     {
-
-        load_plugin_textdomain(
-            'mill3-wp-utils',
-            false,
-            dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
-        );
+        load_plugin_textdomain( 'mill3-wp-utils', false, dirname(dirname(plugin_basename(__FILE__))) . '/languages/' );
     }
 }
