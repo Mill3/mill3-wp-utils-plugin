@@ -34,6 +34,7 @@ class Mill3_Wp_Utils
     private static $AVAILABLE_COMPONENTS = array(
         '\Mill3_Plugins\Utils\Components\Ai_Image_Alt',
         '\Mill3_Plugins\Utils\Components\Gutenberg_Sidebar',
+        //'\Mill3_Plugins\Utils\Components\Live_Site_Viewer',
         '\Mill3_Plugins\Utils\Components\Security_headers',
     );
 
