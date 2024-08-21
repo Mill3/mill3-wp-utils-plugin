@@ -1,0 +1,20 @@
+tr.user-profile-picture { display: none; }
+tr.user-avatar-wrap .avatar-preview {
+    position: relative;
+    width: 96px;
+}
+tr.user-avatar-wrap .avatar-remove-btn {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 20px;
+    background: #999;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

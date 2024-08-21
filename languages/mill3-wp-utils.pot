@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-21T18:43:13+00:00\n"
+"POT-Creation-Date: 2024-08-21T19:41:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: mill3-wp-utils\n"
@@ -140,6 +140,31 @@ msgstr ""
 
 #: components/ai-image-alt/ai-image-alt.php:431
 msgid "Get sophisticated AI suggestions for image alternative text. Works with all installed languages."
+msgstr ""
+
+#: components/avatar/avatar.php:47
+#: components/avatar/avatar.php:50
+msgid "Profile Picture"
+msgstr ""
+
+#: components/avatar/avatar.php:49
+msgid "Select Profile Picture"
+msgstr ""
+
+#: components/avatar/avatar.php:57
+msgid "Change Profile Picture"
+msgstr ""
+
+#: components/avatar/avatar.php:59
+msgid "If no profile picture is defined, Wordpress will try to get your profile image from Gravatar."
+msgstr ""
+
+#: components/avatar/avatar.php:104
+msgid "Avatar"
+msgstr ""
+
+#: components/avatar/avatar.php:105
+msgid "Choose an avatar from Wordpress Media Manager."
 msgstr ""
 
 #: components/block-visibility/block-visibility.php:56
