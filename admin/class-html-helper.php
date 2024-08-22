@@ -13,6 +13,13 @@ class HTML_Helper {
         ));
     }
 
+    public function form_action($action, $nonce = false) {
+        $this->load_view(MILL3_WP_UTILS_PLUGIN_DIR_PATH . 'admin/partials/form-action.php', array(
+            'action' => $action,
+            'nonce' => $nonce ? $action : false,
+        ));
+    }
+
     public function form_body_open($classname = null, $attributes = null) {
         $classname = isset($classname) ? $classname : '';
         $attributes = isset($attributes) ? $attributes : array();
@@ -22,10 +29,8 @@ class HTML_Helper {
 
     public function form_body_close() { echo '</div>'; }
 
-    public function form_footer($action, $nonce = false, $classname = null, $attributes = null) {
+    public function form_footer($classname = null, $attributes = null) {
         $this->load_view(MILL3_WP_UTILS_PLUGIN_DIR_PATH . 'admin/partials/form-footer.php', array(
-            'action' => $action,
-            'nonce' => $nonce,
             'classname' => $classname,
             'attributes' => $attributes,
         ));
@@ -62,7 +67,20 @@ class HTML_Helper {
             'classname' => $classname,
             'attributes' => $attributes,
         ));
-    } 
+    }
+
+    public function form_select($label, $name, $options, $value = null, $description = null, $input_attrs = null, $classname = null, $attributes = null ) {
+        $this->load_view(MILL3_WP_UTILS_PLUGIN_DIR_PATH . 'admin/partials/select.php', array(
+            'label' => $label,
+            'name' => $name,
+            'options' => $options,
+            'value' => $value,
+            'description' => $description,
+            'input_attrs' => $input_attrs,
+            'classname' => $classname,
+            'attributes' => $attributes,
+        ));
+    }
     
 
     // private methods

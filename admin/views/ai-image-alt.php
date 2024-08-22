@@ -4,6 +4,7 @@
  * @var string $base_url : Base URL pointing to plugin root.
  * @var object $html_helper : \Mill3_Plugins\Utils\Admin\HTML_Helper instance.
  * 
+ * @var object $component : Instance of Mill3_Plugins\Utils\Components\Mill3_Wp_Utils_Component\Ai_Image_Alt
  * @var object $openai_api_key : { value, errors }
  * @var object $chatgpt_prompt : { value, errors }
  */
@@ -16,7 +17,6 @@
 >
 
     <?php $html_helper->form_header($component->title(), $component->description()) ?>
-
     <?php $html_helper->form_body_open() ?>
     
         <?php $html_helper->form_textfield(
@@ -29,7 +29,7 @@
         <?php $html_helper->form_separator() ?>
 
         <?php $html_helper->form_textarea(
-            'ChatGPT Prompt', 
+            __('ChatGPT Prompt', 'mill3-wp-utils'), 
             'chatgpt_prompt', 
             $chatgpt_prompt['value'], 
             __('Question you would you like to ask ChatGPT about your image. Leave empty if you want to use default value.', 'mill3-wp-utils'),
@@ -37,6 +37,7 @@
         ) ?>
 
     <?php $html_helper->form_body_close() ?>
-    <?php $html_helper->form_footer( $component->id(), $component->id() ) ?>
+    <?php $html_helper->form_action($component->id(), true) ?>
+    <?php $html_helper->form_footer() ?>
 
 </form>

@@ -99,6 +99,9 @@ body.mill3-wp-utils-page #wpbody .button-primary:hover {
   grid-gap: 25px;
   padding: 30px;
 }
+.mill3-wp-utils-plugin__form__body:last-child {
+  border-radius: 0 0 6px 6px;
+}
 .mill3-wp-utils-plugin__form__separator {
   display: block;
   margin: 0;
@@ -142,7 +145,8 @@ body.mill3-wp-utils-page #wpbody .button-primary:hover {
 }
 
 .mill3-wp-utils-plugin__textfield,
-.mill3-wp-utils-plugin__textarea {
+.mill3-wp-utils-plugin__textarea,
+.mill3-wp-utils-plugin__select {
   box-shadow: 0 0 0 transparent;
   border-radius: 4px;
   border: 1px solid #7f868d;
@@ -165,13 +169,19 @@ body.mill3-wp-utils-page #wpbody .button-primary:hover {
 .mill3-wp-utils-plugin__textfield:hover,
 .mill3-wp-utils-plugin__textfield:focus,
 .mill3-wp-utils-plugin__textarea:hover,
-.mill3-wp-utils-plugin__textarea:focus {
+.mill3-wp-utils-plugin__textarea:focus,
+.mill3-wp-utils-plugin__select:hover,
+.mill3-wp-utils-plugin__select:focus {
   border-color: var(--mill3-wp-utils-plugin-highlight-color) !important;
 }
 .mill3-wp-utils-plugin__textfield:focus,
-.mill3-wp-utils-plugin__textarea:focus {
+.mill3-wp-utils-plugin__textarea:focus,
+.mill3-wp-utils-plugin__select:focus {
   background-color: #fff;
   box-shadow: 0 0 0 1px var(--mill3-wp-utils-plugin-highlight-color) !important;
+}
+.mill3-wp-utils-plugin__select {
+  max-width: none !important;
 }
 
 

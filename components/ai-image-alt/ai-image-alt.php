@@ -402,7 +402,7 @@ class Ai_Image_Alt extends Mill3_Wp_Utils_Component
     public function validate_admin_post() : void {
         // if component is not enabled, stop here
         if( !$this->enabled() ) {
-            _doing_it_wrong( __FUNCTION__, __('AI Image Alt is not enabled.'), $this->version() );
+            _doing_it_wrong( __FUNCTION__, __('AI Image Alt is not enabled.', 'mill3-wp-utils'), $this->version() );
             wp_die();
         }
 
