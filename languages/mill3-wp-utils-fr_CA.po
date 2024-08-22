@@ -6,7 +6,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mill3-wp-utils-"
 "plugin\n"
 "POT-Creation-Date: 2024-08-22T17:27:48+00:00\n"
-"PO-Revision-Date: 2024-08-22 13:28-0400\n"
+"PO-Revision-Date: 2024-08-22 13:33-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -230,10 +230,13 @@ msgid ""
 "Ever find that Rich Block Editor sidebar is too small? This module enable "
 "you to enlarge the Rich Block Editor sidebar to the size of your dreams."
 msgstr ""
+"Trouvez-vous que la barre latérale de l’éditeur de contenu riche est trop "
+"petite ? Ce module vous permet d’élargir la barre latérale de l’éditeur de "
+"contenu riche à la taille de vos rêves."
 
 #: components/live-site-viewer/live-site-viewer.php:101
 msgid "Live Site Viewer"
-msgstr ""
+msgstr "Visualisateur de site web"
 
 #: components/live-site-viewer/live-site-viewer.php:102
 #: components/security-headers/security-headers.php:26
@@ -241,6 +244,8 @@ msgid ""
 "This module allows us to showcase your awesome project in our website. If "
 "you ❤️ us, you should keep this active."
 msgstr ""
+"Ce module nous permet de présenter votre superbe projet dans notre site web. "
+"Si vous ❤️ MILL3, vous devriez garder cette option active."
 
 #: components/module-finder/module-finder.php:30
 msgid "Select a module"
