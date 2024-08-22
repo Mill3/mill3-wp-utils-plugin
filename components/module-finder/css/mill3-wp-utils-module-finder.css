@@ -1,0 +1,57 @@
+.mill3-wp-utils-plugin__moduleFinder__results,
+.mill3-wp-utils-plugin__moduleFinder__empty {
+  background: #fbfbfb;
+  border: 1px solid #b5bfc9;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  margin: 0;
+  padding: 30px;
+}
+
+.mill3-wp-utils-plugin__moduleFinder__results {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 24px;
+}
+.mill3-wp-utils-plugin__moduleFinder__postType {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 15px;
+  margin: 0;
+}
+.mill3-wp-utils-plugin__moduleFinder__postTypeLabel,
+.mill3-wp-utils-plugin__moduleFinder__postName {
+  color: #242628;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+.mill3-wp-utils-plugin__moduleFinder__posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.mill3-wp-utils-plugin__moduleFinder__post {
+  display: flex;
+  align-items: baseline;
+  grid-gap: 1em;
+  margin: 0;
+}
+.mill3-wp-utils-plugin__moduleFinder__postName {
+  font-weight: normal;
+}
+.mill3-wp-utils-plugin__moduleFinder__postActions {
+  display: flex;
+  align-items: baseline;
+  grid-gap: 0.5em;
+  color: #7f868d;
+  font-size: 13px;
+}
+
+.mill3-wp-utils-plugin__moduleFinder__empty p {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
