@@ -36,6 +36,7 @@ class Mill3_Wp_Utils_Component
 
     protected function init() : void {}
     
+    public static function uninstall($plugin) : void {}
     public function enabled($enabled = null) : bool {
         if( $enabled === true || $enabled === false ) $this->_enabled = $enabled;
         return $this->_enabled;

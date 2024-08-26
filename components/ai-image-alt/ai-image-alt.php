@@ -9,12 +9,12 @@ class Ai_Image_Alt extends Mill3_Wp_Utils_Component
         'openai_api_key' => '', 
         'chatgpt_prompt' => ''
     );
+    private static $OPTION_NAME = 'ai-image-alt';
 
-    private $option_name = 'ai-image-alt';
     private $options = array();
 
     protected function init() : void {
-        $this->options = maybe_unserialize( get_option( $this->plugin->get_option_name($this->option_name), self::$DEFAULT_OPTIONS ) );
+        $this->options = maybe_unserialize( get_option( $this->plugin->get_option_name(self::$OPTION_NAME), self::$DEFAULT_OPTIONS ) );
 
         $this->loader->add_action('admin_post_' . $this->id(), $this, 'validate_admin_post');
 
@@ -26,10 +26,13 @@ class Ai_Image_Alt extends Mill3_Wp_Utils_Component
         $this->loader->add_action('wp_ajax_mill3_generate_image_alt', $this, 'generate_image_alt');
     }
 
+    public static function uninstall($plugin) : void {
+        delete_option( $plugin::get_option_name(self::$OPTION_NAME) );
+    }
     public function enabled($enabled = null) : bool {
         if( $enabled === true ) {
             add_option(
-                $this->plugin->get_option_name($this->option_name), 
+                $this->plugin->get_option_name(self::$OPTION_NAME), 
                 self::$DEFAULT_OPTIONS, 
                 null, 
                 false
@@ -417,7 +420,7 @@ class Ai_Image_Alt extends Mill3_Wp_Utils_Component
         $this->options['chatgpt_prompt'] = $chatgpt_prompt;
 
         // update database
-        update_option( $this->plugin->get_option_name($this->option_name), $this->options );
+        update_option( $this->plugin->get_option_name(self::$OPTION_NAME), $this->options );
 
         // redirect to admin page with admin notices
         $this->form_redirect(self::NOTICE_SUCCESS);

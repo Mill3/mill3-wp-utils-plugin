@@ -41,6 +41,13 @@ class Mill3_Wp_Utils
         '\Mill3_Plugins\Utils\Components\Security_headers',
         '\Mill3_Plugins\Utils\Components\SVG',
     );
+    private static $DEFAULT_ENABLED_COMPONENTS = array(
+        'avatar',
+        'block-visibility',
+        'gutenberg-sidebar',
+        'security-headers',
+        'svg',
+    );
 
     /**
      * @var $instance Plugin Singleton plugin instance
@@ -75,7 +82,7 @@ class Mill3_Wp_Utils
 
     public function __construct() {
         $this->options = array(
-            'components' => maybe_unserialize( get_option( self::get_option_name('components'), array() ) ),
+            'components' => maybe_unserialize( get_option( self::get_option_name('components'), self::$DEFAULT_ENABLED_COMPONENTS ) ),
         );
 
         $this->loader = new \Mill3_Plugins\Utils\Loader\Mill3_Wp_Utils_Loader();
@@ -104,9 +111,16 @@ class Mill3_Wp_Utils
         return self::$instance;
     }
 
-    public static function activate() { add_option( self::get_option_name('components'), array(), null, false ); }
+    public static function activate() { add_option( self::get_option_name('components'), self::$DEFAULT_ENABLED_COMPONENTS, null, false ); }
     public static function deactivate() {}
-    public static function uninstall() { delete_option( self::get_option_name('components') ); }
+    public static function uninstall() {
+        delete_option( self::get_option_name('components') );
+
+        // uninstall each components
+        foreach(self::$AVAILABLE_COMPONENTS as $namespace) {
+            $namespace::uninstall( self::get_instance() );
+        }
+    }
 
     /**
      * Load all the components of the plugin

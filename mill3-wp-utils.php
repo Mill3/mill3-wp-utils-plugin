@@ -90,7 +90,6 @@ $MILL_WP_UTILS = Mill3_Plugins\Utils\Mill3_Wp_Utils::get_instance();
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-mill3-wp-utils-activator.php
  */
 function activate_mill3_wp_utils() { Mill3_Plugins\Utils\Mill3_Wp_Utils::activate(); }
 function deactivate_mill3_wp_utils() { Mill3_Plugins\Utils\Mill3_Wp_Utils::deactivate(); }
@@ -99,9 +98,3 @@ function uninstall_mill3_wp_utils() { Mill3_Plugins\Utils\Mill3_Wp_Utils::uninst
 register_activation_hook( __FILE__, 'activate_mill3_wp_utils' );
 register_deactivation_hook( __FILE__, 'deactivate_mill3_wp_utils' );
 register_uninstall_hook( __FILE__, 'uninstall_mill3_wp_utils' );
-
-/*
-register_activation_hook( __FILE__, array('Mill3_Plugins\Utils\Mill3_Wp_Utils', 'activate') );
-register_deactivation_hook( __FILE__, array('Mill3_Plugins\Utils\Mill3_Wp_Utils', 'deactivate') );
-register_uninstall_hook( __FILE__, array('Mill3_Plugins\Utils\Mill3_Wp_Utils', 'uninstall') );
-*/
