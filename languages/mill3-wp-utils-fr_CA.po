@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: MILL3 WP Utils 0.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mill3-wp-utils-"
 "plugin\n"
-"POT-Creation-Date: 2024-08-22T17:27:48+00:00\n"
-"PO-Revision-Date: 2024-08-22 13:33-0400\n"
+"POT-Creation-Date: 2024-08-26T19:32:08+00:00\n"
+"PO-Revision-Date: 2024-08-26 15:33-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -141,43 +141,43 @@ msgstr "Voir"
 msgid "This module is not used by any post."
 msgstr "Ce module n’est pas utilisé par aucune publication."
 
-#: components/ai-image-alt/ai-image-alt.php:59
+#: components/ai-image-alt/ai-image-alt.php:62
 msgid "Generate Alt with AI"
 msgstr "Généré un text alternatif par l’IA"
 
-#: components/ai-image-alt/ai-image-alt.php:60
+#: components/ai-image-alt/ai-image-alt.php:63
 msgid "Failed"
 msgstr "Échec"
 
-#: components/ai-image-alt/ai-image-alt.php:61
+#: components/ai-image-alt/ai-image-alt.php:64
 msgid "Generating…"
 msgstr "Processus en cours…"
 
-#: components/ai-image-alt/ai-image-alt.php:263
+#: components/ai-image-alt/ai-image-alt.php:266
 msgid "OpenAI API KEY is not defined."
 msgstr "Votre clé d’API OpenAI n’est pas définit."
 
-#: components/ai-image-alt/ai-image-alt.php:270
+#: components/ai-image-alt/ai-image-alt.php:273
 msgid "mediaID is not defined."
 msgstr "mediaID n’est pas défini."
 
-#: components/ai-image-alt/ai-image-alt.php:276
+#: components/ai-image-alt/ai-image-alt.php:279
 msgid "Attachment is not an image."
 msgstr "Le fichier n’est pas une image."
 
-#: components/ai-image-alt/ai-image-alt.php:283
+#: components/ai-image-alt/ai-image-alt.php:286
 msgid "Invalid image ID."
 msgstr "ID d’image invalide."
 
-#: components/ai-image-alt/ai-image-alt.php:405
+#: components/ai-image-alt/ai-image-alt.php:408
 msgid "AI Image Alt is not enabled."
 msgstr "Votre clé d’API OpenAI n’est pas définit."
 
-#: components/ai-image-alt/ai-image-alt.php:430
+#: components/ai-image-alt/ai-image-alt.php:433
 msgid "AI Image Alt"
 msgstr "Alt d’image par IA"
 
-#: components/ai-image-alt/ai-image-alt.php:431
+#: components/ai-image-alt/ai-image-alt.php:434
 msgid ""
 "Get sophisticated AI suggestions for image alternative text. Works with all "
 "installed languages."
@@ -260,6 +260,16 @@ msgid "This module allows developers to quickly find posts using a module."
 msgstr ""
 "Ce module permet aux développeurs de trouver rapidement quels publications "
 "utilisent un module."
+
+#: components/robots-indexing/robots-indexing.php:20
+msgid "Robots Indexing"
+msgstr "Robots d’indexation"
+
+#: components/robots-indexing/robots-indexing.php:21
+msgid "Prevent indexing this website if domain contains mill3.dev"
+msgstr ""
+"Prévient l’indexation de votre site web si le nom de domaine contient mill3."
+"dev"
 
 #: components/security-headers/security-headers.php:25
 msgid "Security Headers"

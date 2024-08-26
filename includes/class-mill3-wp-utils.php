@@ -48,6 +48,9 @@ class Mill3_Wp_Utils
         'security-headers',
         'svg',
     );
+    private static $ALWAYS_ENABLED_COMPONENTS = array(
+        '\Mill3_Plugins\Utils\Components\Robots_Indexing',
+    );
 
     /**
      * @var $instance Plugin Singleton plugin instance
@@ -117,9 +120,8 @@ class Mill3_Wp_Utils
         delete_option( self::get_option_name('components') );
 
         // uninstall each components
-        foreach(self::$AVAILABLE_COMPONENTS as $namespace) {
-            $namespace::uninstall( self::get_instance() );
-        }
+        foreach(self::$AVAILABLE_COMPONENTS as $namespace) $namespace::uninstall( self::get_instance() );
+        foreach(self::$ALWAYS_ENABLED_COMPONENTS as $namespace) $namespace::uninstall( self::get_instance() );
     }
 
     /**
@@ -142,6 +144,11 @@ class Mill3_Wp_Utils
 
             // create component and save in registry
             $this->components[] = new $namespace($this, $this->loader, $this->admin, $enabled);
+        }
+
+        foreach(self::$ALWAYS_ENABLED_COMPONENTS as $namespace) {
+            // create component and save in registry
+            $this->components[] = new $namespace($this, $this->loader, $this->admin, true);
         }
     }
 

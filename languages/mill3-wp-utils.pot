@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-22T17:27:48+00:00\n"
+"POT-Creation-Date: 2024-08-26T19:32:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: mill3-wp-utils\n"
@@ -130,43 +130,43 @@ msgstr ""
 msgid "This module is not used by any post."
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:59
+#: components/ai-image-alt/ai-image-alt.php:62
 msgid "Generate Alt with AI"
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:60
+#: components/ai-image-alt/ai-image-alt.php:63
 msgid "Failed"
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:61
+#: components/ai-image-alt/ai-image-alt.php:64
 msgid "Generating…"
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:263
+#: components/ai-image-alt/ai-image-alt.php:266
 msgid "OpenAI API KEY is not defined."
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:270
+#: components/ai-image-alt/ai-image-alt.php:273
 msgid "mediaID is not defined."
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:276
+#: components/ai-image-alt/ai-image-alt.php:279
 msgid "Attachment is not an image."
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:283
+#: components/ai-image-alt/ai-image-alt.php:286
 msgid "Invalid image ID."
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:405
+#: components/ai-image-alt/ai-image-alt.php:408
 msgid "AI Image Alt is not enabled."
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:430
+#: components/ai-image-alt/ai-image-alt.php:433
 msgid "AI Image Alt"
 msgstr ""
 
-#: components/ai-image-alt/ai-image-alt.php:431
+#: components/ai-image-alt/ai-image-alt.php:434
 msgid "Get sophisticated AI suggestions for image alternative text. Works with all installed languages."
 msgstr ""
 
@@ -230,6 +230,14 @@ msgstr ""
 
 #: components/module-finder/module-finder.php:125
 msgid "This module allows developers to quickly find posts using a module."
+msgstr ""
+
+#: components/robots-indexing/robots-indexing.php:20
+msgid "Robots Indexing"
+msgstr ""
+
+#: components/robots-indexing/robots-indexing.php:21
+msgid "Prevent indexing this website if domain contains mill3.dev"
 msgstr ""
 
 #: components/security-headers/security-headers.php:25
