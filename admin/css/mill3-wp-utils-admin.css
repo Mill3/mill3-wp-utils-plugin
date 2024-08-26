@@ -7,6 +7,14 @@
 body.mill3-wp-utils-page #wpwrap {
   background-color: #f0f2f4;
 }
+body.mill3-wp-utils-page #wpfooter {
+  padding: 15px 20px;
+  border-top: 1px solid #b5bfc9;
+  background: #fff;
+}
+body.mill3-wp-utils-page #wpbody-content {
+  padding-bottom: 50px;
+}
 .mill3-wp-utils-plugin__wrap {
   background: #f8f9fa;
   border-bottom: 1px solid #b5bfc9;
