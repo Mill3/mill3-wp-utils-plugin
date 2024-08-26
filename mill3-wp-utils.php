@@ -80,7 +80,7 @@ require plugin_dir_path( __FILE__ ) . 'components/ai-image-alt/ai-image-alt.php'
 require plugin_dir_path( __FILE__ ) . 'components/avatar/avatar.php';
 require plugin_dir_path( __FILE__ ) . 'components/block-visibility/block-visibility.php';
 require plugin_dir_path( __FILE__ ) . 'components/gutenberg-sidebar/gutenberg-sidebar.php';
-//require plugin_dir_path( __FILE__ ) . 'components/live-site-viewer/live-site-viewer.php';
+require plugin_dir_path( __FILE__ ) . 'components/live-site-viewer/live-site-viewer.php';
 require plugin_dir_path( __FILE__ ) . 'components/module-finder/module-finder.php';
 require plugin_dir_path( __FILE__ ) . 'components/security-headers/security-headers.php';
 require plugin_dir_path( __FILE__ ) . 'components/svg/svg.php';
