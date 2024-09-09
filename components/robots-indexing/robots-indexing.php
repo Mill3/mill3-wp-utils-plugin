@@ -19,5 +19,5 @@ class Robots_Indexing extends Mill3_Wp_Utils_Component
     public static function id() : string { return 'robots-indexing'; }
     public function version() : string { return '0.0.1'; }
     public function title() : string { return __('Robots Indexing', 'mill3-wp-utils'); }
-    public function description() : string { return __('Prevent indexing this website if domain contains mill3.dev', 'mill3-wp-utils'); }
+    public function description() : string { return __('Prevent indexing this website if domain contains mill3.dev. Can\'t be disabled.', 'mill3-wp-utils'); }
 }

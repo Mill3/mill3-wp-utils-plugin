@@ -75,7 +75,7 @@ class Mill3_Wp_Utils
 
     /**
      * Collection of components
-     * 
+     *
      * @since   0.0.1
      * @access  protected
      * @var     Array   $components Collection of components
@@ -148,7 +148,7 @@ class Mill3_Wp_Utils
 
         foreach(self::$ALWAYS_ENABLED_COMPONENTS as $namespace) {
             // create component and save in registry
-            $this->components[] = new $namespace($this, $this->loader, $this->admin, true);
+            $this->components[] = new $namespace($this, $this->loader, $this->admin, true, true);
         }
     }
 

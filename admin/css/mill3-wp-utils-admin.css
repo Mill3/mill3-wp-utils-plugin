@@ -387,6 +387,7 @@ body.mill3-wp-utils-page #wpfooter {
   transform: translateX(0px);
   animation: Mill3WpUtilsPluginComponentToggleOff 250ms 0ms cubic-bezier(0.190, 1.000, 0.220, 1.000) both; /* easings.$easeOutExpo */
 }
+
 .mill3-wp-utils-plugin__component__input {
   position: absolute;
   top: 0;
@@ -400,6 +401,10 @@ body.mill3-wp-utils-page #wpfooter {
 }
 .mill3-wp-utils-plugin__component__toggle:has(.mill3-wp-utils-plugin__component__input:checked)::before {
   animation: Mill3WpUtilsPluginComponentToggleOn 250ms 0ms cubic-bezier(0.190, 1.000, 0.220, 1.000) both; /* easings.$easeOutExpo */
+}
+.mill3-wp-utils-plugin__component__toggle:has(.mill3-wp-utils-plugin__component__input[disabled]) {
+  opacity: 0.1;
+  cursor: not-allowed;
 }
 
 

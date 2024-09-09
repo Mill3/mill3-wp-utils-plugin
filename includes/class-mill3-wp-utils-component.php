@@ -22,20 +22,25 @@ class Mill3_Wp_Utils_Component
     protected $loader;
     protected $plugin;
 
+    // determine if the component is enabled by default
     private $_enabled = false;
 
-    public function __construct($plugin, $loader, $admin = null, $enabled = false) {
+    // determine if the component is forced enabled, thus cannot be disabled by the user
+    private $_forced = false;
+
+    public function __construct($plugin, $loader, $admin = null, $enabled = false, $forced = false) {
         $this->plugin = $plugin;
         $this->loader = $loader;
         $this->admin = $admin;
 
         $this->_enabled = boolval($enabled);
+        $this->_forced = boolval($forced);
 
         if( $this->_enabled ) $this->init();
     }
 
     protected function init() : void {}
-    
+
     public static function uninstall($plugin) : void {}
     public function enabled($enabled = null) : bool {
         if( $enabled === true || $enabled === false ) $this->_enabled = $enabled;
@@ -43,6 +48,7 @@ class Mill3_Wp_Utils_Component
     }
 
     public function has_admin_page() : bool { return method_exists( $this, 'admin_page' ); }
+    public function can_toggle() : bool { return $this->_forced === false; }
     public function get_admin_menu_slug() : string { return $this->admin->menu_slug . '-' . $this->id(); }
     public function get_admin_menu_url() : string { return menu_page_url( $this->get_admin_menu_slug(), false ); }
     public function show_access_restricted_page() : void {
