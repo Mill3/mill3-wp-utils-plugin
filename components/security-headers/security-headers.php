@@ -23,5 +23,5 @@ class Security_headers extends Mill3_Wp_Utils_Component
     public static function id() : string { return 'security-headers'; }
     public function version() : string { return '0.0.1'; }
     public function title() : string { return __('Security Headers', 'mill3-wp-utils'); }
-    public function description() : string { return __('This module allows us to showcase your awesome project in our website. If you ❤️ us, you should keep this active.', 'mill3-wp-utils'); }
+    public function description() : string { return __('This module adds security header preventing clickjacking.', 'mill3-wp-utils'); }
 }
