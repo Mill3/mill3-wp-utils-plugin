@@ -11,25 +11,37 @@ MILL3 WP utils, includes Gutenberg editor sidebar resizer.
 
 == Description ==
 
-MILL3 WP utils, includes Gutenberg editor sidebar resizer.
+MILL3 WP utils, includes Gutenberg editor sidebar resizer and many essential features and utils for our Boilerplate Theme
 
 == How to update translations files (.pot, .mo, .po) ==
 
 To update the main .pot file (.pot = PO Template file), open a Terminal window at the root of your website. (ex: /Desktop/wordpress-installation/).
 
-```sh 
-docker-compose run wp-cli i18n make-pot wp-content/plugins/mill3-wp-utils-plugin wp-content/plugins/mill3-wp-utils-plugin/languages/mill3-wp-utils.pot --domain="mill3-wp-utils" --exclude="wp-content/plugins/mill3-wp-utils-plugin/vendor/" 
+```sh
+docker-compose run wp-cli i18n make-pot wp-content/plugins/mill3-wp-utils-plugin wp-content/plugins/mill3-wp-utils-plugin/languages/mill3-wp-utils.pot --domain="mill3-wp-utils" --exclude="wp-content/plugins/mill3-wp-utils-plugin/vendor/"
 ```
 
-To update a particular language, you need to install POEdit. 
-Then, go to */wp-content/plugins/mill3-wp-utils-plugin/languages/* and double-click on the .po file or the language you want to edit translations. 
-In POEdit, go to the Translation Menu -> Update from POT file... and choose the .pot file in */wp-content/plugins/mill3-wp-utils-plugin/languages/*.  
-Edit your translations and hit Save.  
+To update a particular language, you need to install POEdit.
+Then, go to */wp-content/plugins/mill3-wp-utils-plugin/languages/* and double-click on the .po file or the language you want to edit translations.
+In POEdit, go to the Translation Menu -> Update from POT file... and choose the .pot file in */wp-content/plugins/mill3-wp-utils-plugin/languages/*.
+Edit your translations and hit Save.
 
-To translate this plugin into another language, you need to open */wp-content/plugins/mill3-wp-utils-plugin/languages/mill3-wp-utils.pot* in POEdit and 
-click on "Create new translation" at the bottom/left of this window. 
+To translate this plugin into another language, you need to open */wp-content/plugins/mill3-wp-utils-plugin/languages/mill3-wp-utils.pot* in POEdit and
+click on "Create new translation" at the bottom/left of this window.
 
 == Changelog ==
+
+= 0.1.0 =
+
+New features :
+
+- **ai-image-alt :** OpenAI image alt text generator
+- **avatar :** Add an avatar field for user
+- **block-visibility :** Set default options for plugin [Block Visibility](https://wordpress.org/plugins/block-visibility/)
+- **module-finder :** Allow editors to find which pages is using a specific page-builder module
+- **robots-indexing :** Force robot.txt to no-index when running on a dev/staging domain
+- **svg :** Allow SVG format upload
+- **live-site-viewer :** Enable remote scroll control through an iFrame using postMessage JS API
 
 = 0.0.4 =
 * First release with Sidebar utils and security headers
