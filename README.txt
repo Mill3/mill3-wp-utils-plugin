@@ -31,6 +31,10 @@ click on "Create new translation" at the bottom/left of this window.
 
 == Changelog ==
 
+= 0.1.1 =
+
+* Gutenberg Sidebar : fixed bug sidebar not closing when X button is clicked from a sidebar components-panel
+
 = 0.1.0 =
 
 New features :
