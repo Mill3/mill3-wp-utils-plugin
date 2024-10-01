@@ -43,10 +43,12 @@ const mill3WpUtilsGutenbergSidebar = () => {
   // find main element
   const ELEMENT = document.querySelector('.edit-post-layout, .edit-site-layout');
 
+  const CLOSE_SELECTOR = '.interface-pinned-items button, .editor-sidebar__panel-tabs button:last-child, .components-panel__header button:last-child';
+
   // wait for the element to be available
   if(!ELEMENT) return
 
-  jQuery('body').on('click', '.interface-pinned-items button', mill3WpUtilsGutenbergOpenSidebar);
+  jQuery('body').on('click', CLOSE_SELECTOR, mill3WpUtilsGutenbergOpenSidebar);
 
   // open sidebar on initial load after some timeout
   setTimeout(mill3WpUtilsGutenbergOpenSidebar, 1000);
