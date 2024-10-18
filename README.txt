@@ -31,6 +31,10 @@ click on "Create new translation" at the bottom/left of this window.
 
 == Changelog ==
 
+= 0.1.2 = 
+
+* Block Visibility : Define more default settings values and deregister screen_size inline css.
+
 = 0.1.1 =
 
 * Gutenberg Sidebar : fixed bug sidebar not closing when X button is clicked from a sidebar components-panel

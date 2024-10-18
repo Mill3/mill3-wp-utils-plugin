@@ -3,7 +3,7 @@
  * Plugin Name:       MILL3 WP Utils
  * Plugin URI:        https://github.com/Mill3/mill3-wp-utils-plugin
  * Description:       MILL3 WP Utils
- * Version:           0.1.1
+ * Version:           0.1.2
  * Author:            MILL3 Studio
  * Author URI:        https://mill3.studio/
  * Tested up to:      6.6.6
