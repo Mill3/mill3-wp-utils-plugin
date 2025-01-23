@@ -3,6 +3,12 @@
 namespace Mill3_Plugins\Utils\Components;
 use Mill3_Plugins\Utils\Components\Mill3_Wp_Utils_Component;
 
+/**
+*
+* ! WARNING : TREAT THIS FILE VERY CAREFULLY BECAUSE IT COULD CAUSE CATASTROPHIC SEO HAVOC !
+*
+*/
+
 class Robots_Indexing extends Mill3_Wp_Utils_Component
 {
     protected function init(): void {
