@@ -31,6 +31,10 @@ click on "Create new translation" at the bottom/left of this window.
 
 == Changelog ==
 
+= 0.1.3 = 
+
+* Remove Auto Sizes for Lazy Loaded Image in Wordpress (added in WP 6.7)
+
 = 0.1.2 = 
 
 * Block Visibility : Define more default settings values and deregister screen_size inline css.
