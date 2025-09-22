@@ -31,6 +31,10 @@ click on "Create new translation" at the bottom/left of this window.
 
 == Changelog ==
 
+= 0.1.5 = 
+
+* Polylang Utils : Fix a bug with content duplication from a language to another one.
+
 = 0.1.4 =
 
 * Core component : remove Polylang ACF instruction field (added in Polylang 3.7)
