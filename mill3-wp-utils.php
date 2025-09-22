@@ -3,7 +3,7 @@
  * Plugin Name:       MILL3 WP Utils
  * Plugin URI:        https://github.com/Mill3/mill3-wp-utils-plugin
  * Description:       MILL3 WP Utils
- * Version:           0.1.5
+ * Version:           0.1.4
  * Author:            MILL3 Studio
  * Author URI:        https://mill3.studio/
  * Tested up to:      6.6.6
@@ -26,7 +26,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 0.0.1 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'MILL3_WP_UTILS_VERSION', '0.1.5' );
+define( 'MILL3_WP_UTILS_VERSION', '0.1.4' );
 
 
 /**
@@ -85,7 +85,7 @@ require plugin_dir_path( __FILE__ ) . 'components/gutenberg-sidebar/gutenberg-si
 require plugin_dir_path( __FILE__ ) . 'components/live-site-viewer/live-site-viewer.php';
 require plugin_dir_path( __FILE__ ) . 'components/module-finder/module-finder.php';
 require plugin_dir_path( __FILE__ ) . 'components/robots-indexing/robots-indexing.php';
-require plugin_dir_path( __FILE__ ) . 'components/polylang-utils/polylang-utils.php';
+//require plugin_dir_path( __FILE__ ) . 'components/polylang-utils/polylang-utils.php';
 require plugin_dir_path( __FILE__ ) . 'components/security-headers/security-headers.php';
 require plugin_dir_path( __FILE__ ) . 'components/svg/svg.php';
 
