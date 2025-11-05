@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: MILL3 WP Utils 0.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mill3-wp-utils-"
 "plugin\n"
-"POT-Creation-Date: 2024-08-26T19:32:08+00:00\n"
-"PO-Revision-Date: 2024-08-26 15:33-0400\n"
+"POT-Creation-Date: 2025-09-22T18:56:02+00:00\n"
+"PO-Revision-Date: 2025-09-22 15:01-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.7\n"
 "X-Domain: mill3-wp-utils\n"
 
 #. Plugin Name of the plugin
@@ -103,11 +103,11 @@ msgstr "Clé d’API OpenAI"
 
 #: admin/views/ai-image-alt.php:26
 msgid ""
-"You can find your Secret API key on the <a href=\"https://platform.openai."
-"com/api-keys\" target=\"_blank\">API key page</a>."
+"You can find your Secret API key on the <a href=\"https://"
+"platform.openai.com/api-keys\" target=\"_blank\">API key page</a>."
 msgstr ""
-"Vous pouvez trouver votre clé d’API secrète sur la <a href=“https://platform."
-"openai.com/api-keys” target=“_blank”>page API key</a>."
+"Vous pouvez trouver votre clé d’API secrète sur la <a href=“https://"
+"platform.openai.com/api-keys” target=“_blank”>page API key</a>."
 
 #: admin/views/ai-image-alt.php:32
 msgid "ChatGPT Prompt"
@@ -211,11 +211,11 @@ msgstr "Avatar"
 msgid "Choose an avatar from Wordpress Media Manager."
 msgstr "Sélectionner un avatar à partir du choix de Média de Wordpress."
 
-#: components/block-visibility/block-visibility.php:56
+#: components/block-visibility/block-visibility.php:79
 msgid "Block Visibility"
 msgstr "Block Visibility"
 
-#: components/block-visibility/block-visibility.php:57
+#: components/block-visibility/block-visibility.php:80
 msgid "This module set default values for Block Visibility plugin."
 msgstr ""
 "Ce module définit les valeurs par défaut à utiliser pour l’extension Block "
@@ -239,7 +239,6 @@ msgid "Live Site Viewer"
 msgstr "Visualisateur de site web"
 
 #: components/live-site-viewer/live-site-viewer.php:102
-#: components/security-headers/security-headers.php:26
 msgid ""
 "This module allows us to showcase your awesome project in our website. If "
 "you ❤️ us, you should keep this active."
@@ -261,19 +260,34 @@ msgstr ""
 "Ce module permet aux développeurs de trouver rapidement quels publications "
 "utilisent un module."
 
-#: components/robots-indexing/robots-indexing.php:20
+#: components/polylang-utils/polylang-utils.php:39
+msgid "Polylang Utils"
+msgstr "Utilitaires Polylang"
+
+#: components/polylang-utils/polylang-utils.php:40
+msgid "Fix various bug inside Polylang. Can't be disabled."
+msgstr "Corrige différents problèmes de Polylang. Ne peut être désactivé."
+
+#: components/robots-indexing/robots-indexing.php:27
 msgid "Robots Indexing"
 msgstr "Robots d’indexation"
 
-#: components/robots-indexing/robots-indexing.php:21
-msgid "Prevent indexing this website if domain contains mill3.dev"
+#: components/robots-indexing/robots-indexing.php:28
+msgid ""
+"Prevent indexing this website if domain contains mill3.dev. Can't be "
+"disabled."
 msgstr ""
-"Prévient l’indexation de votre site web si le nom de domaine contient mill3."
-"dev"
+"Prévient l’indexation de votre site web si le nom de domaine contient "
+"mill3.dev. Ne peut être désactivé."
 
 #: components/security-headers/security-headers.php:25
 msgid "Security Headers"
 msgstr "Security Headers"
+
+#: components/security-headers/security-headers.php:26
+msgid "This module adds security header preventing clickjacking."
+msgstr ""
+"Ce module ajoute une entête de sécurité prévenant le détournement de clic."
 
 #: components/svg/svg.php:52
 msgid "SVG"

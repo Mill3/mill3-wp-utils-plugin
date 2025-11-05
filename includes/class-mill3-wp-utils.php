@@ -49,6 +49,7 @@ class Mill3_Wp_Utils
         'svg',
     );
     private static $ALWAYS_ENABLED_COMPONENTS = array(
+        //'\Mill3_Plugins\Utils\Components\Polylang_Utils',
         '\Mill3_Plugins\Utils\Components\Robots_Indexing',
     );
 

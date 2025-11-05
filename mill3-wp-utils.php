@@ -85,11 +85,13 @@ require plugin_dir_path( __FILE__ ) . 'components/gutenberg-sidebar/gutenberg-si
 require plugin_dir_path( __FILE__ ) . 'components/live-site-viewer/live-site-viewer.php';
 require plugin_dir_path( __FILE__ ) . 'components/module-finder/module-finder.php';
 require plugin_dir_path( __FILE__ ) . 'components/robots-indexing/robots-indexing.php';
+//require plugin_dir_path( __FILE__ ) . 'components/polylang-utils/polylang-utils.php';
 require plugin_dir_path( __FILE__ ) . 'components/security-headers/security-headers.php';
 require plugin_dir_path( __FILE__ ) . 'components/svg/svg.php';
 
-// start plugin
-$MILL_WP_UTILS = Mill3_Plugins\Utils\Mill3_Wp_Utils::get_instance();
+// start plugin after all plugins are loaded
+add_action('plugins_loaded', function() { Mill3_Plugins\Utils\Mill3_Wp_Utils::get_instance(); });
+
 
 /**
  * The code that runs during plugin activation.
