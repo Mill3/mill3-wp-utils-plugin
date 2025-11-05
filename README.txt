@@ -31,9 +31,9 @@ click on "Create new translation" at the bottom/left of this window.
 
 == Changelog ==
 
-= 0.1.5 = 
+= 0.1.4.1 =
 
-* Polylang Utils : Fix a bug with content duplication from a language to another one.
+* Fix PHP 8.4 warnings
 
 = 0.1.4 =
 
