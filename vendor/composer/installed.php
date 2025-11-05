@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3f6cee02cdf6e2accbb2b66b016823b7f7b8cd81',
+        'reference' => 'db2143820ad4f704951be106dc0f7a2255b9de7f',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3f6cee02cdf6e2accbb2b66b016823b7f7b8cd81',
+            'reference' => 'db2143820ad4f704951be106dc0f7a2255b9de7f',
             'dev_requirement' => false,
         ),
         'doctrine/instantiator' => array(
@@ -272,12 +272,12 @@
             'dev_requirement' => true,
         ),
         'yahnis-elsts/plugin-update-checker' => array(
-            'pretty_version' => 'v5.4',
-            'version' => '5.4.0.0',
+            'pretty_version' => 'v5.6',
+            'version' => '5.6.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../yahnis-elsts/plugin-update-checker',
             'aliases' => array(),
-            'reference' => 'e8e53e6d98e37fa7c895c93417f52e3775494715',
+            'reference' => 'a2db6871deec989a74e1f90fafc6d58ae526a879',
             'dev_requirement' => false,
         ),
         'yoast/phpunit-polyfills' => array(
