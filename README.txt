@@ -7,7 +7,7 @@ Tested up to: 6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MILL3 WP utils, includes Gutenberg editor sidebar resizer.
+MILL3 WP Utils, includes a bunch of administration features, frontend securities and bug fixes for all MILL3 projects.
 
 == Description ==
 
@@ -30,6 +30,10 @@ To translate this plugin into another language, you need to open */wp-content/pl
 click on "Create new translation" at the bottom/left of this window.
 
 == Changelog ==
+
+= 0.1.5 = 
+
+* iOS26 Scroll Fix : Fix an iOS 26 scroll bug that made content visible below Apple's island.
 
 = 0.1.4.1 =
 

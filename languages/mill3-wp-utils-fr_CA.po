@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: MILL3 WP Utils 0.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mill3-wp-utils-"
 "plugin\n"
-"POT-Creation-Date: 2025-09-22T18:56:02+00:00\n"
-"PO-Revision-Date: 2025-09-22 15:01-0400\n"
+"POT-Creation-Date: 2025-11-06T16:32:50+00:00\n"
+"PO-Revision-Date: 2025-11-06 11:35-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -233,6 +233,14 @@ msgstr ""
 "Trouvez-vous que la barre latérale de l’éditeur de contenu riche est trop "
 "petite ? Ce module vous permet d’élargir la barre latérale de l’éditeur de "
 "contenu riche à la taille de vos rêves."
+
+#: components/ios26-scroll-fix/ios26-scroll-fix.php:30
+msgid "iOS 26 Scroll Fix"
+msgstr "iOS 26 correctif de défilement"
+
+#: components/ios26-scroll-fix/ios26-scroll-fix.php:31
+msgid "Fix iOS 26 scroll bug that made content visible below Apple's island."
+msgstr "Corrige un problème de contenu visible sous le “island” Apple."
 
 #: components/live-site-viewer/live-site-viewer.php:101
 msgid "Live Site Viewer"

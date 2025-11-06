@@ -36,6 +36,7 @@ class Mill3_Wp_Utils
         '\Mill3_Plugins\Utils\Components\Avatar',
         '\Mill3_Plugins\Utils\Components\Block_Visibility',
         '\Mill3_Plugins\Utils\Components\Gutenberg_Sidebar',
+        '\Mill3_Plugins\Utils\Components\iOS26ScrollFix',
         '\Mill3_Plugins\Utils\Components\Live_Site_Viewer',
         '\Mill3_Plugins\Utils\Components\Module_Finder',
         '\Mill3_Plugins\Utils\Components\Security_headers',
