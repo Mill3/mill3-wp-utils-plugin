@@ -100,6 +100,8 @@ class Module_Finder extends Mill3_Wp_Utils_Component
 
     // add css to admin page
     public function enqueue_styles() {
+        if( !$this->is_current_screen() ) return;
+        
         wp_enqueue_style($this->plugin->get_name() . '-module-finder', plugin_dir_url(__FILE__) . 'css/mill3-wp-utils-module-finder.css', array($this->plugin->get_name()), $this->version(), 'all');
     }
     

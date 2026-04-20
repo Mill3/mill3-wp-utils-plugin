@@ -31,6 +31,10 @@ click on "Create new translation" at the bottom/left of this window.
 
 == Changelog ==
 
+= 0.1.6 = 
+
+* Module Finder : Fix a warning related to css loading of unregistered dependency.
+
 = 0.1.5 = 
 
 * iOS26 Scroll Fix : Fix an iOS 26 scroll bug that made content visible below Apple's island.
