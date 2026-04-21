@@ -29,6 +29,15 @@ Edit your translations and hit Save.
 To translate this plugin into another language, you need to open */wp-content/plugins/mill3-wp-utils-plugin/languages/mill3-wp-utils.pot* in POEdit and
 click on "Create new translation" at the bottom/left of this window.
 
+== Publishing a new version of the plugin ==
+
+Upgrade plugin version in mill3-wp-utils.php (line 6 and 29).  
+Write a changelog for this new version in README.txt.  
+Push change to git repository.  
+Go to Github (https://github.com/Mill3/mill3-wp-utils-plugin/releases) and **Draft a new release**. 
+Inside the **New release** page, create a new tag with the same version number as previously updated in mill3-wp-utils.php.  
+When you're done filling the release form, publish release to the world.  
+
 == Changelog ==
 
 = 0.1.6 = 
