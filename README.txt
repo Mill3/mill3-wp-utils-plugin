@@ -40,6 +40,10 @@ When you're done filling the release form, publish release to the world.
 
 == Changelog ==
 
+= 0.1.7 = 
+
+* Fix bug preventing editing capability in Block Editor after upgrading to Wordpress 7.1.
+
 = 0.1.6 = 
 
 * Module Finder : Fix a warning related to css loading of unregistered dependency.
