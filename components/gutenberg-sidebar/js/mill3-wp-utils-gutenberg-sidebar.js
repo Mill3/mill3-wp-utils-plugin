@@ -25,11 +25,20 @@ const mill3WpUtilsGutenbergSetResizable = () => {
   if(!jQuery(ELEMENT_SELECTOR).length) return
 
   const storedWidth = localStorage.getItem(MILL3_WP_UTILS_GUTENBERG_SIDEBAR_STORAGE_KEY);
-  jQuery(ELEMENT_SELECTOR).width(storedWidth);
-  // --mill3-sidebar-width tracks the resting (dragged) width, read by the CSS rule that
-  // sizes the inner content — kept separate from the outer wrapper's own animating width
-  // so form fields don't reflow/squeeze during the open/close transition
-  jQuery(ELEMENT_SELECTOR).css('--mill3-sidebar-width', storedWidth + 'px');
+
+  // --has-resized gates every width/transition override in the CSS : without it core's
+  // own sidebar is untouched. Nothing stored yet (user never dragged the handle) means we
+  // don't add it here, so a first-time user sees core's stock behavior instead of a forced
+  // "nullpx" width — the resize handler below adds it the moment a real drag happens.
+  if(storedWidth !== null) {
+    jQuery(ELEMENT_SELECTOR).addClass('--has-resized');
+    jQuery(ELEMENT_SELECTOR).width(storedWidth);
+    // --mill3-sidebar-width tracks the resting (dragged) width, read by the CSS rule that
+    // sizes the inner content — kept separate from the outer wrapper's own animating width
+    // so form fields don't reflow/squeeze during the open/close transition
+    jQuery(ELEMENT_SELECTOR).css('--mill3-sidebar-width', storedWidth + 'px');
+  }
+
   jQuery(ELEMENT_SELECTOR).resizable({
       handles: 'w',
       // suppress the open/close width transition while actively dragging, otherwise every
@@ -42,6 +51,7 @@ const mill3WpUtilsGutenbergSetResizable = () => {
       },
       resize: function() {
           const newWidth = jQuery(this).width();
+          jQuery(this).addClass('--has-resized');
           jQuery(this).css({'left': 0});
           jQuery(this).css('--mill3-sidebar-width', newWidth + 'px');
           localStorage.setItem(MILL3_WP_UTILS_GUTENBERG_SIDEBAR_STORAGE_KEY, newWidth);
