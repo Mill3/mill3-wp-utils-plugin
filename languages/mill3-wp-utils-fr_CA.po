@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: MILL3 WP Utils 0.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mill3-wp-utils-"
 "plugin\n"
-"POT-Creation-Date: 2025-11-06T16:32:50+00:00\n"
+"POT-Creation-Date: 2026-08-05T17:13:35+00:00\n"
 "PO-Revision-Date: 2025-11-06 11:35-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -33,11 +33,11 @@ msgstr ""
 msgid "https://mill3.studio/"
 msgstr ""
 
-#: admin/class-mill3-wp-utils-admin.php:59 admin/views/dashboard.php:26
+#: admin/class-mill3-wp-utils-admin.php:61 admin/views/dashboard.php:26
 msgid "Settings"
 msgstr "Réglages"
 
-#: admin/class-mill3-wp-utils-admin.php:70
+#: admin/class-mill3-wp-utils-admin.php:72
 msgid ""
 "Thank you for your confidence in <a href=\"https://mill3.studio\" "
 "target=\"_blank\">MILL3 Studio</a>."
@@ -45,43 +45,50 @@ msgstr ""
 "Merci pour votre confiance en <a href=“https://mill3.studio” "
 "target=“_blank”>MILL3 Studio</a>."
 
-#: admin/class-mill3-wp-utils-admin.php:80
-#: admin/class-mill3-wp-utils-admin.php:96 admin/ui/header.php:13
+#: admin/class-mill3-wp-utils-admin.php:82
+#: admin/class-mill3-wp-utils-admin.php:98 admin/ui/header.php:13
 msgid "MILL3 Wordpress Utility Plugin"
 msgstr "Extension utilitaire Wordpress par MILL3"
 
-#: admin/class-mill3-wp-utils-admin.php:81
+#: admin/class-mill3-wp-utils-admin.php:83
 msgid "MILL3 Plugin"
 msgstr "Extension MILL3"
 
-#: admin/class-mill3-wp-utils-admin.php:97
-#: admin/class-mill3-wp-utils-admin.php:276 admin/ui/breadcrumb.php:10
+#: admin/class-mill3-wp-utils-admin.php:99
+#: admin/class-mill3-wp-utils-admin.php:301 admin/ui/breadcrumb.php:10
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: admin/class-mill3-wp-utils-admin.php:121
-#: admin/class-mill3-wp-utils-admin.php:122
-#: admin/class-mill3-wp-utils-admin.php:300
+#: admin/class-mill3-wp-utils-admin.php:123
+#: admin/class-mill3-wp-utils-admin.php:124
+#: admin/class-mill3-wp-utils-admin.php:165
+#: admin/class-mill3-wp-utils-admin.php:324
+msgid "Changelog"
+msgstr "Historique des versions"
+
+#: admin/class-mill3-wp-utils-admin.php:133
+#: admin/class-mill3-wp-utils-admin.php:134
+#: admin/class-mill3-wp-utils-admin.php:334
 msgid "Support"
 msgstr "Aide"
 
-#: admin/class-mill3-wp-utils-admin.php:145
+#: admin/class-mill3-wp-utils-admin.php:157
 msgid "Modules"
 msgstr "Modules"
 
-#: admin/class-mill3-wp-utils-admin.php:160
+#: admin/class-mill3-wp-utils-admin.php:183
 msgid "Settings updated."
 msgstr "Règlages enregistrés."
 
-#: admin/class-mill3-wp-utils-admin.php:161
+#: admin/class-mill3-wp-utils-admin.php:184
 msgid "An error occur during settings update. Please try again."
 msgstr "Une erreure s’est produite. Veuillez essayer de nouveau."
 
-#: admin/class-mill3-wp-utils-admin.php:162
+#: admin/class-mill3-wp-utils-admin.php:185
 msgid "Informations"
 msgstr "Informations"
 
-#: admin/class-mill3-wp-utils-admin.php:163
+#: admin/class-mill3-wp-utils-admin.php:186
 msgid "Warning"
 msgstr "Attention"
 
@@ -120,6 +127,23 @@ msgid ""
 msgstr ""
 "Question que vous voulez poser à ChatGPT à propos de votre image. Laissez "
 "vide pour utiliser la valeur par défaut."
+
+#: admin/views/changelog.php:15
+msgid "Installed version"
+msgstr "Version installée"
+
+#. translators: %s: link to the plugin releases page.
+#: admin/views/changelog.php:22
+msgid "Updates are published on %s."
+msgstr "Les mises à jour sont publiées sur %s."
+
+#: admin/views/changelog.php:31
+msgid "No changelog available."
+msgstr "Aucun historique disponible."
+
+#: admin/views/changelog.php:43
+msgid "Installed"
+msgstr "Installée"
 
 #: admin/views/module-finder.php:25
 msgid "Module"
@@ -258,15 +282,30 @@ msgstr ""
 msgid "Select a module"
 msgstr "Sélectionner un module"
 
-#: components/module-finder/module-finder.php:124
+#: components/module-finder/module-finder.php:126
 msgid "Module Finder"
 msgstr "Recherche de module"
 
-#: components/module-finder/module-finder.php:125
+#: components/module-finder/module-finder.php:127
 msgid "This module allows developers to quickly find posts using a module."
 msgstr ""
 "Ce module permet aux développeurs de trouver rapidement quels publications "
 "utilisent un module."
+
+#: components/polylang-acf-clone-fix/polylang-acf-clone-fix.php:170
+msgid "Polylang + ACF — Seamless Clone Block Fix"
+msgstr "Polylang + ACF — Correctif des clones « transparents » dans les blocs"
+
+#: components/polylang-acf-clone-fix/polylang-acf-clone-fix.php:171
+msgid ""
+"Restores ACF field values that Polylang silently drops when copying or "
+"translating ACF blocks whose fields come from a clone field displayed "
+"\"seamless\". Enable only on projects using Polylang Pro + ACF Pro."
+msgstr ""
+"Restaure les valeurs des champs ACF que Polylang supprime silencieusement "
+"lors de la copie ou de la traduction de blocs ACF dont les champs "
+"proviennent d'un champ Clone affiché en mode « transparent » (seamless). À "
+"activer uniquement sur les projets utilisant Polylang Pro + ACF Pro."
 
 #: components/polylang-utils/polylang-utils.php:39
 msgid "Polylang Utils"

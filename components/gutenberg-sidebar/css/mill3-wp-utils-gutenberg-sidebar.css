@@ -1,15 +1,34 @@
+/* fixed to the resting (dragged) width, NOT 100% of the animating outer wrapper below —
+   otherwise form fields inside reflow/squeeze on every frame as that wrapper's width
+   transitions to/from 0. --mill3-sidebar-width is kept in sync by the resizable JS, so
+   the content itself never resizes: the outer wrapper's overflow:hidden just reveals/
+   masks it during open/close, matching a slide/reveal effect instead of a squeeze. */
 .interface-interface-skeleton__sidebar .interface-complementary-area,
 .interface-interface-skeleton__sidebar .interface-complementary-area__fill {
-  width: 100% !important;
+  width: var(--mill3-sidebar-width, 300px) !important;
 }
-.edit-post-layout:not(.--mill3-gutenberg-sidebar-open) .interface-interface-skeleton__sidebar {
-  display: none;
+
+/* replicates core's own ComplementaryArea motion (Framer Motion tweening `width`,
+   see editor.js: ANIMATION_DURATION = 0.3, ease: [0.6, 0, 0.4, 1]) with a plain CSS
+   transition instead. Disabled while actively dragging the resize handle (.is-resizing),
+   otherwise every width update jQuery UI applies during a drag would also ease/lag. */
+.interface-interface-skeleton__sidebar {
+  overflow: hidden;
+  transition: width 0.3s cubic-bezier(0.6, 0, 0.4, 1);
 }
+@media (prefers-reduced-motion) {
+  .interface-interface-skeleton__sidebar {
+    transition: none;
+  }
+}
+.interface-interface-skeleton__sidebar.is-resizing {
+  transition: none;
+}
+.edit-post-layout:not(.--mill3-gutenberg-sidebar-open) .interface-interface-skeleton__sidebar,
 .edit-site-layout:not(.--mill3-gutenberg-sidebar-open) .interface-interface-skeleton__sidebar {
-  display: none;
+  width: 0 !important;
 }
 .--mill3-gutenberg-sidebar-open .interface-interface-skeleton__sidebar {
-  width: 300px;
   max-width: 50vw !important;
 }
 

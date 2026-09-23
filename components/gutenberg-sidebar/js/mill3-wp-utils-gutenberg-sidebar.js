@@ -1,5 +1,4 @@
 // constants to check when the script is ready
-let MILL3_WP_UTILS_GUTENBERG_SIDEBAR_READY = false;
 let MILL3_WP_UTILS_GUTENBERG_SIDEBAR_RIZEABLE_READY = false;
 
 // LocalStorage key, previously defined in our all our themes using Gutenberg since 2022. ** DONT CHANGE THIS **
@@ -10,7 +9,9 @@ if(typeof wp !== 'undefined' && typeof wp.data !== 'undefined') {
   wp.domReady(() => {
     // using wp.data.subscribe to wait for the Gutenberg editor to be ready, functions are called again as the state changes in the editor
     wp.data.subscribe(mill3WpUtilsGutenbergSetResizable);
-    wp.data.subscribe(mill3WpUtilsGutenbergSidebar);
+    // runs on every store change, so it also reflects sidebar toggles triggered programmatically
+    // (e.g. wp.data.dispatch('core/edit-post').openGeneralSidebar(...)), not just DOM clicks
+    wp.data.subscribe(mill3WpUtilsGutenbergOpenSidebar);
   });
 }
 
@@ -23,12 +24,27 @@ const mill3WpUtilsGutenbergSetResizable = () => {
   // Check if the element exists, if not the wp.data.subscribe will be called again until it's found
   if(!jQuery(ELEMENT_SELECTOR).length) return
 
-  jQuery(ELEMENT_SELECTOR).width(localStorage.getItem(MILL3_WP_UTILS_GUTENBERG_SIDEBAR_STORAGE_KEY))
+  const storedWidth = localStorage.getItem(MILL3_WP_UTILS_GUTENBERG_SIDEBAR_STORAGE_KEY);
+  jQuery(ELEMENT_SELECTOR).width(storedWidth);
+  // --mill3-sidebar-width tracks the resting (dragged) width, read by the CSS rule that
+  // sizes the inner content — kept separate from the outer wrapper's own animating width
+  // so form fields don't reflow/squeeze during the open/close transition
+  jQuery(ELEMENT_SELECTOR).css('--mill3-sidebar-width', storedWidth + 'px');
   jQuery(ELEMENT_SELECTOR).resizable({
       handles: 'w',
+      // suppress the open/close width transition while actively dragging, otherwise every
+      // width update below would also ease/lag instead of tracking the mouse
+      start: function() {
+          jQuery(this).addClass('is-resizing');
+      },
+      stop: function() {
+          jQuery(this).removeClass('is-resizing');
+      },
       resize: function() {
+          const newWidth = jQuery(this).width();
           jQuery(this).css({'left': 0});
-          localStorage.setItem(MILL3_WP_UTILS_GUTENBERG_SIDEBAR_STORAGE_KEY, jQuery(this).width());
+          jQuery(this).css('--mill3-sidebar-width', newWidth + 'px');
+          localStorage.setItem(MILL3_WP_UTILS_GUTENBERG_SIDEBAR_STORAGE_KEY, newWidth);
       }
   });
 
@@ -36,34 +52,16 @@ const mill3WpUtilsGutenbergSetResizable = () => {
   MILL3_WP_UTILS_GUTENBERG_SIDEBAR_RIZEABLE_READY = true;
 }
 
-const mill3WpUtilsGutenbergSidebar = () => {
-  // stop if already ready
-  if(MILL3_WP_UTILS_GUTENBERG_SIDEBAR_READY === true) return;
-
-  // find main element
-  const ELEMENT = document.querySelector('.edit-post-layout, .edit-site-layout');
-
-  const CLOSE_SELECTOR = '.interface-pinned-items button, .editor-sidebar__panel-tabs button:last-child, .components-panel__header button:last-child';
-
-  // wait for the element to be available
-  if(!ELEMENT) return
-
-  jQuery('body').on('click', CLOSE_SELECTOR, mill3WpUtilsGutenbergOpenSidebar);
-
-  // open sidebar on initial load after some timeout
-  setTimeout(mill3WpUtilsGutenbergOpenSidebar, 1000);
-
-  // set ready flag to true, prevent re-running the function
-  MILL3_WP_UTILS_GUTENBERG_SIDEBAR_READY = true;
-}
-
 const mill3WpUtilsGutenbergOpenSidebar = () => {
-  const BUTTONS = document.querySelectorAll('.interface-pinned-items button');
   const CLASSNAME = '--mill3-gutenberg-sidebar-open';
   const ELEMENT = document.querySelector('.edit-post-layout, .edit-site-layout');
+  const SCOPE = document.querySelector('.edit-site-layout') ? 'core/edit-site' : 'core/edit-post';
 
-  // check if one of the buttons is pressed
-  const isSidebarOpen = [...BUTTONS].some( btn => btn.classList.contains('is-pressed') );
+  if (!ELEMENT) return;
+
+  // read the real sidebar state from the same store openGeneralSidebar()/closeGeneralSidebar() use,
+  // instead of guessing from pinned plugin buttons (those don't reflect the core Settings/Block sidebar)
+  const isSidebarOpen = !!wp.data.select('core/interface').getActiveComplementaryArea(SCOPE);
 
   if (isSidebarOpen) {
     if( !ELEMENT.classList.contains(CLASSNAME) ) ELEMENT.classList.add(CLASSNAME);
