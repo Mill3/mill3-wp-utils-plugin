@@ -31,24 +31,30 @@ click on "Create new translation" at the bottom/left of this window.
 
 == Publishing a new version of the plugin ==
 
-Upgrade plugin version in mill3-wp-utils.php (line 6 and 29).  
-Write a changelog for this new version in README.txt.  
-Push change to git repository.  
-Go to Github (https://github.com/Mill3/mill3-wp-utils-plugin/releases) and **Draft a new release**. 
-Inside the **New release** page, create a new tag with the same version number as previously updated in mill3-wp-utils.php.  
-When you're done filling the release form, publish release to the world.  
+Upgrade plugin version in mill3-wp-utils.php (line 6 and 29).
+Write a changelog for this new version in README.txt.
+Push change to git repository.
+Go to Github (https://github.com/Mill3/mill3-wp-utils-plugin/releases) and **Draft a new release**.
+Inside the **New release** page, create a new tag with the same version number as previously updated in mill3-wp-utils.php.
+When you're done filling the release form, publish release to the world.
 
 == Changelog ==
 
-= 0.1.7 = 
+= 0.1.8 =
+
+* New component **polylang-acf-clone-fix** (disabled by default) : restores the ACF field values Polylang Pro silently drops when copying or translating ACF blocks whose fields come from a Clone field displayed "Seamless".
+* Admin : new **Changelog** panel displaying the installed version and the complete release history.
+* Gutenberg Sidebar Resize : refactored code closer to core sidebar behavior, open/close is now animated.
+
+= 0.1.7 =
 
 * Fix bug preventing editing capability in Block Editor after upgrading to Wordpress 7.1.
 
-= 0.1.6 = 
+= 0.1.6 =
 
 * Module Finder : Fix a warning related to css loading of unregistered dependency.
 
-= 0.1.5 = 
+= 0.1.5 =
 
 * iOS26 Scroll Fix : Fix an iOS 26 scroll bug that made content visible below Apple's island.
 

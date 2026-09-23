@@ -27,6 +27,7 @@ class Mill3_Wp_Utils_Admin
     private $plugin;
     private $loader;
     private $html_helper;
+    private $changelog;
     private $menu_items;
 
     public $menu_slug = MILL3_WP_UTILS_PLUGIN_SLUG;
@@ -43,6 +44,7 @@ class Mill3_Wp_Utils_Admin
         $this->plugin = $plugin;
         $this->loader = $loader;
         $this->html_helper = new \Mill3_Plugins\Utils\Admin\HTML_Helper();
+        $this->changelog = new \Mill3_Plugins\Utils\Admin\Changelog();
 
         $this->loader->add_filter('plugin_action_links_' . MILL3_WP_UTILS_PLUGIN_DIR_NAME . '/' . MILL3_WP_UTILS_PLUGIN_FILE_NAME, $this, 'add_plugin_link');
         $this->loader->add_filter('admin_body_class', $this, 'admin_body_class');
@@ -115,6 +117,16 @@ class Mill3_Wp_Utils_Admin
             );
         }
 
+        // add "Changelog" submenu, always right before "Support"
+        add_submenu_page(
+            $this->menu_slug,
+            __( 'Changelog', 'mill3-wp-utils' ),
+            __( 'Changelog', 'mill3-wp-utils'),
+            'manage_options',
+            $this->get_changelog_menu_slug(),
+            array( $this, 'changelog_page' )
+        );
+
         // add "Support" submenu
         add_submenu_page(
             $this->menu_slug,
@@ -145,6 +157,17 @@ class Mill3_Wp_Utils_Admin
             __( 'Modules', 'mill3-wp-utils'),
             'admin/views/dashboard.php', 
             array('admin' => $this, 'components' => $this->plugin->components, 'menu_items' => $this->get_menu_items())
+        );
+    }
+
+    public function changelog_page() {
+        $this->render_template(
+            __( 'Changelog', 'mill3-wp-utils'),
+            'admin/views/changelog.php',
+            array(
+                'version' => $this->plugin->get_version(),
+                'releases' => $this->changelog->get_releases(),
+            )
         );
     }
 
@@ -215,6 +238,8 @@ class Mill3_Wp_Utils_Admin
         wp_send_json(array('success' => $success));
         wp_die();
     }
+
+    public function get_changelog_menu_slug() : string { return $this->menu_slug . '-changelog'; }
 
     public function render_template($title, $view, $data = array()) {
         // load partials
@@ -291,6 +316,15 @@ class Mill3_Wp_Utils_Admin
                 'is_enabled' => $component->enabled()
             );
         }
+
+        // always add "Changelog" menu item, right before "Support"
+        $this->menu_items[] = array(
+            'id' => 'changelog',
+            'href' => menu_page_url( $this->get_changelog_menu_slug(), false ),
+            'title' => __( 'Changelog', 'mill3-wp-utils'),
+            'is_active' => $current_page_slug === $this->get_changelog_menu_slug(),
+            'is_enabled' => true,
+        );
 
         // always add "Support" menu item
         $this->menu_items[] = array(
