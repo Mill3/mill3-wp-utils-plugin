@@ -40,6 +40,10 @@ When you're done filling the release form, publish release to the world.
 
 == Changelog ==
 
+= 0.1.9 =
+
+* New component **polylang-switcher-output-fix** (disabled by default) : strips the `<span class="pll-switcher-label">` wrapper Polylang adds around language switcher labels, in both its own output and the nav menu items it creates.
+
 = 0.1.8 =
 
 * New component **polylang-acf-clone-fix** (disabled by default) : restores the ACF field values Polylang Pro silently drops when copying or translating ACF blocks whose fields come from a Clone field displayed "Seamless".
